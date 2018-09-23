@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCompraPedido));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.DataLancNF = new System.Windows.Forms.DateTimePicker();
             this.BtnRemoverItem = new System.Windows.Forms.Button();
             this.LblTotalParcial = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,14 +62,15 @@
             this.BtnFechaNota = new System.Windows.Forms.Button();
             this.BtnInserirProduto = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtNotaFiscal = new System.Windows.Forms.TextBox();
             this.Id_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ean = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecoCusto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtNotaFiscal = new System.Windows.Forms.TextBox();
+            this.CmbCadPor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,8 +78,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CmbCadPor);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.DataLancNF);
             this.groupBox1.Controls.Add(this.BtnRemoverItem);
             this.groupBox1.Controls.Add(this.LblTotalParcial);
             this.groupBox1.Controls.Add(this.label8);
@@ -102,7 +102,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(49, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(777, 625);
+            this.groupBox1.Size = new System.Drawing.Size(752, 603);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamento de Nota Fiscal";
@@ -113,18 +113,9 @@
             this.label12.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(267, 44);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(75, 17);
+            this.label12.Size = new System.Drawing.Size(60, 17);
             this.label12.TabIndex = 71;
-            this.label12.Text = "Data Lanc.";
-            // 
-            // DataLancNF
-            // 
-            this.DataLancNF.Enabled = false;
-            this.DataLancNF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DataLancNF.Location = new System.Drawing.Point(350, 42);
-            this.DataLancNF.Name = "DataLancNF";
-            this.DataLancNF.Size = new System.Drawing.Size(130, 23);
-            this.DataLancNF.TabIndex = 70;
+            this.label12.Text = "Usuário:";
             // 
             // BtnRemoverItem
             // 
@@ -189,7 +180,7 @@
             // 
             this.TxtTotalNota.Location = new System.Drawing.Point(589, 81);
             this.TxtTotalNota.Name = "TxtTotalNota";
-            this.TxtTotalNota.Size = new System.Drawing.Size(130, 23);
+            this.TxtTotalNota.Size = new System.Drawing.Size(137, 23);
             this.TxtTotalNota.TabIndex = 3;
             this.TxtTotalNota.Text = "R$";
             // 
@@ -218,7 +209,7 @@
             this.DataVencNF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DataVencNF.Location = new System.Drawing.Point(589, 40);
             this.DataVencNF.Name = "DataVencNF";
-            this.DataVencNF.Size = new System.Drawing.Size(130, 23);
+            this.DataVencNF.Size = new System.Drawing.Size(137, 23);
             this.DataVencNF.TabIndex = 1;
             // 
             // groupBox2
@@ -274,9 +265,9 @@
             // BtnConsultaProduto
             // 
             this.BtnConsultaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConsultaProduto.Location = new System.Drawing.Point(484, 33);
+            this.BtnConsultaProduto.Location = new System.Drawing.Point(245, 36);
             this.BtnConsultaProduto.Name = "BtnConsultaProduto";
-            this.BtnConsultaProduto.Size = new System.Drawing.Size(213, 31);
+            this.BtnConsultaProduto.Size = new System.Drawing.Size(176, 31);
             this.BtnConsultaProduto.TabIndex = 175;
             this.BtnConsultaProduto.Text = "Consultar Produtos";
             this.BtnConsultaProduto.UseVisualStyleBackColor = true;
@@ -369,7 +360,7 @@
             this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSair.Location = new System.Drawing.Point(649, 558);
             this.BtnSair.Name = "BtnSair";
-            this.BtnSair.Size = new System.Drawing.Size(100, 31);
+            this.BtnSair.Size = new System.Drawing.Size(77, 31);
             this.BtnSair.TabIndex = 13;
             this.BtnSair.Text = "Sair";
             this.BtnSair.UseVisualStyleBackColor = true;
@@ -440,28 +431,8 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(721, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(705, 207);
             this.dataGridView1.TabIndex = 49;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 17);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "Nota Fiscal Nº";
-            // 
-            // TxtNotaFiscal
-            // 
-            this.TxtNotaFiscal.Location = new System.Drawing.Point(145, 42);
-            this.TxtNotaFiscal.Name = "TxtNotaFiscal";
-            this.TxtNotaFiscal.Size = new System.Drawing.Size(116, 23);
-            this.TxtNotaFiscal.TabIndex = 0;
-            this.TxtNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtNotaFiscal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNotaFiscal_KeyPress);
-            this.TxtNotaFiscal.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNotaFiscal_KeyUp);
             // 
             // Id_Prod
             // 
@@ -513,6 +484,35 @@
             this.Fabricante.Name = "Fabricante";
             this.Fabricante.ReadOnly = true;
             this.Fabricante.Width = 110;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 17);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "Nota Fiscal Nº";
+            // 
+            // TxtNotaFiscal
+            // 
+            this.TxtNotaFiscal.Location = new System.Drawing.Point(145, 42);
+            this.TxtNotaFiscal.Name = "TxtNotaFiscal";
+            this.TxtNotaFiscal.Size = new System.Drawing.Size(116, 23);
+            this.TxtNotaFiscal.TabIndex = 0;
+            this.TxtNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtNotaFiscal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNotaFiscal_KeyPress);
+            this.TxtNotaFiscal.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNotaFiscal_KeyUp);
+            // 
+            // CmbCadPor
+            // 
+            this.CmbCadPor.FormattingEnabled = true;
+            this.CmbCadPor.Location = new System.Drawing.Point(333, 41);
+            this.CmbCadPor.Name = "CmbCadPor";
+            this.CmbCadPor.Size = new System.Drawing.Size(147, 24);
+            this.CmbCadPor.TabIndex = 72;
+            this.CmbCadPor.Click += new System.EventHandler(this.CmbCadPor_Click);
             // 
             // FrmCompraPedido
             // 
@@ -573,12 +573,12 @@
         private System.Windows.Forms.TextBox TxtEAN;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker DataLancNF;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ean;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtde;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoCusto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fabricante;
+        private System.Windows.Forms.ComboBox CmbCadPor;
     }
 }

@@ -298,6 +298,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone.ico" />
+    <None Include="Resources\venda.png" />
+    <None Include="Resources\consultar.png" />
+    <None Include="Resources\entrada.png" />
+    <None Include="Resources\logoff.png" />
+    <None Include="Resources\sobre.png" />
+    <None Include="Resources\sair.png" />
+    <None Include="Resources\calc.png" />
+    <None Include="Resources\bloco.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\paint.png" />
     <None Include="Resources\produto.png" />
     <None Include="Resources\usuario.png" />
     <None Include="Resources\fornecedor.png" />

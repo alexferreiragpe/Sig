@@ -49,14 +49,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
-            this.BtnRelCompra = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.BtnRelCliente = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.BtnRelCompra = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button20 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -79,8 +80,9 @@
             this.tabPage4.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel6.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -106,7 +108,6 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage1.BackgroundImage = global::SIG.Properties.Resources.fundo;
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -129,10 +130,10 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.Image = global::SIG.Properties.Resources.usuario;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button4.Location = new System.Drawing.Point(474, 3);
+            this.button4.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button4.BackgroundImage = global::SIG.Properties.Resources.usuario;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.Location = new System.Drawing.Point(438, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(140, 40);
             this.button4.TabIndex = 3;
@@ -142,10 +143,10 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Image = global::SIG.Properties.Resources.produto;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(314, 3);
+            this.button3.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button3.BackgroundImage = global::SIG.Properties.Resources.produto;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Location = new System.Drawing.Point(292, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 40);
             this.button3.TabIndex = 2;
@@ -155,11 +156,10 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button2.BackgroundImage = global::SIG.Properties.Resources.fornecedor;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Image = global::SIG.Properties.Resources.fornecedor;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(154, 3);
+            this.button2.Location = new System.Drawing.Point(146, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 40);
             this.button2.TabIndex = 1;
@@ -169,10 +169,9 @@
             // 
             // BtnCliente
             // 
-            this.BtnCliente.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnCliente.BackColor = System.Drawing.Color.PaleTurquoise;
             this.BtnCliente.BackgroundImage = global::SIG.Properties.Resources.cliente;
             this.BtnCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCliente.Location = new System.Drawing.Point(0, 3);
             this.BtnCliente.Name = "BtnCliente";
             this.BtnCliente.Size = new System.Drawing.Size(140, 40);
@@ -204,24 +203,28 @@
             // 
             // button6
             // 
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button6.BackgroundImage = global::SIG.Properties.Resources.entrada;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button6.Location = new System.Drawing.Point(5, 3);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(140, 40);
             this.button6.TabIndex = 0;
-            this.button6.Text = "Lançar Nota Fiscal";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Text = "Entrada NF";
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(163, 3);
+            this.button7.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button7.BackgroundImage = global::SIG.Properties.Resources.consultar;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button7.Location = new System.Drawing.Point(151, 3);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(140, 40);
             this.button7.TabIndex = 1;
-            this.button7.Text = "Consultar Compras";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Text = "Consultar NF";
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // tabPage3
@@ -246,19 +249,22 @@
             // 
             // BtnVendaConsulta
             // 
-            this.BtnVendaConsulta.Image = ((System.Drawing.Image)(resources.GetObject("BtnVendaConsulta.Image")));
-            this.BtnVendaConsulta.Location = new System.Drawing.Point(167, 5);
+            this.BtnVendaConsulta.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BtnVendaConsulta.BackgroundImage = global::SIG.Properties.Resources.consultar;
+            this.BtnVendaConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnVendaConsulta.Location = new System.Drawing.Point(151, 5);
             this.BtnVendaConsulta.Name = "BtnVendaConsulta";
             this.BtnVendaConsulta.Size = new System.Drawing.Size(140, 40);
             this.BtnVendaConsulta.TabIndex = 2;
-            this.BtnVendaConsulta.Text = "Consultar Vendas";
-            this.BtnVendaConsulta.UseVisualStyleBackColor = true;
+            this.BtnVendaConsulta.Text = "Consultar Venda";
+            this.BtnVendaConsulta.UseVisualStyleBackColor = false;
             this.BtnVendaConsulta.Click += new System.EventHandler(this.BtnVendaConsulta_Click);
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button8.BackgroundImage = global::SIG.Properties.Resources.venda;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button8.Location = new System.Drawing.Point(5, 5);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(140, 40);
@@ -288,68 +294,83 @@
             // 
             // button10
             // 
+            this.button10.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button10.BackgroundImage = global::SIG.Properties.Resources.consultar;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button10.Location = new System.Drawing.Point(8, 2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(140, 40);
             this.button10.TabIndex = 0;
-            this.button10.Text = "Consultar Estoque";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Text = "Consulta Estoq";
+            this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button11);
-            this.tabPage5.Controls.Add(this.BtnRelCompra);
-            this.tabPage5.Controls.Add(this.button9);
-            this.tabPage5.Controls.Add(this.BtnRelCliente);
+            this.tabPage5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage5.Controls.Add(this.panel5);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1224, 61);
             this.tabPage5.TabIndex = 7;
             this.tabPage5.Text = "Relatórios";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.button11);
+            this.panel5.Controls.Add(this.BtnRelCliente);
+            this.panel5.Controls.Add(this.button9);
+            this.panel5.Controls.Add(this.BtnRelCompra);
+            this.panel5.Location = new System.Drawing.Point(6, 6);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(765, 50);
+            this.panel5.TabIndex = 5;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(503, 11);
+            this.button11.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button11.Location = new System.Drawing.Point(441, 6);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(140, 40);
             this.button11.TabIndex = 4;
             this.button11.Text = "Vendas";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // BtnRelCompra
-            // 
-            this.BtnRelCompra.Location = new System.Drawing.Point(346, 11);
-            this.BtnRelCompra.Name = "BtnRelCompra";
-            this.BtnRelCompra.Size = new System.Drawing.Size(140, 40);
-            this.BtnRelCompra.TabIndex = 3;
-            this.BtnRelCompra.Text = "Compras";
-            this.BtnRelCompra.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(187, 11);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(140, 40);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Produtos";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button11.UseVisualStyleBackColor = false;
             // 
             // BtnRelCliente
             // 
-            this.BtnRelCliente.Location = new System.Drawing.Point(30, 11);
+            this.BtnRelCliente.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BtnRelCliente.Location = new System.Drawing.Point(3, 6);
             this.BtnRelCliente.Name = "BtnRelCliente";
             this.BtnRelCliente.Size = new System.Drawing.Size(140, 40);
             this.BtnRelCliente.TabIndex = 1;
             this.BtnRelCliente.Text = "Clientes";
-            this.BtnRelCliente.UseVisualStyleBackColor = true;
+            this.BtnRelCliente.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button9.Location = new System.Drawing.Point(149, 6);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(140, 40);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Produtos";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // BtnRelCompra
+            // 
+            this.BtnRelCompra.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BtnRelCompra.Location = new System.Drawing.Point(295, 6);
+            this.BtnRelCompra.Name = "BtnRelCompra";
+            this.BtnRelCompra.Size = new System.Drawing.Size(140, 40);
+            this.BtnRelCompra.TabIndex = 3;
+            this.BtnRelCompra.Text = "Compras";
+            this.BtnRelCompra.UseVisualStyleBackColor = false;
             // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage7.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage7.Controls.Add(this.panel7);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
@@ -357,63 +378,67 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Utilitários";
             // 
-            // tableLayoutPanel1
+            // panel7
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel1.Controls.Add(this.button20, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button19, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button21, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button22, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 46);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(134, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(120, 40);
-            this.button20.TabIndex = 1;
-            this.button20.Text = "Bloco de Notas";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.panel7.Controls.Add(this.button19);
+            this.panel7.Controls.Add(this.button20);
+            this.panel7.Controls.Add(this.button21);
+            this.panel7.Controls.Add(this.button22);
+            this.panel7.Location = new System.Drawing.Point(8, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(674, 52);
+            this.panel7.TabIndex = 1;
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(3, 3);
+            this.button19.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button19.BackgroundImage = global::SIG.Properties.Resources.calc;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button19.Location = new System.Drawing.Point(3, 7);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(120, 40);
             this.button19.TabIndex = 2;
             this.button19.Text = "Calculadora";
-            this.button19.UseVisualStyleBackColor = true;
+            this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click_1);
+            // 
+            // button20
+            // 
+            this.button20.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button20.BackgroundImage = global::SIG.Properties.Resources.bloco;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button20.Location = new System.Drawing.Point(129, 7);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(120, 40);
+            this.button20.TabIndex = 1;
+            this.button20.Text = "Bloco Notas";
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(262, 3);
+            this.button21.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button21.BackgroundImage = global::SIG.Properties.Resources.excel;
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button21.Location = new System.Drawing.Point(381, 7);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(120, 40);
             this.button21.TabIndex = 3;
             this.button21.Text = "Excel";
-            this.button21.UseVisualStyleBackColor = true;
+            this.button21.UseVisualStyleBackColor = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(392, 3);
+            this.button22.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button22.BackgroundImage = global::SIG.Properties.Resources.paint;
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button22.Location = new System.Drawing.Point(255, 7);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(120, 40);
             this.button22.TabIndex = 4;
             this.button22.Text = "Paint";
-            this.button22.UseVisualStyleBackColor = true;
+            this.button22.UseVisualStyleBackColor = false;
             this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // tabPage6
@@ -439,35 +464,41 @@
             // 
             // button23
             // 
-            this.button23.Image = ((System.Drawing.Image)(resources.GetObject("button23.Image")));
+            this.button23.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button23.BackgroundImage = global::SIG.Properties.Resources.sobre;
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button23.Location = new System.Drawing.Point(3, 0);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(140, 40);
             this.button23.TabIndex = 2;
             this.button23.Text = "Sobre";
-            this.button23.UseVisualStyleBackColor = true;
+            this.button23.UseVisualStyleBackColor = false;
             this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // BtnLogoff
             // 
-            this.BtnLogoff.Image = ((System.Drawing.Image)(resources.GetObject("BtnLogoff.Image")));
-            this.BtnLogoff.Location = new System.Drawing.Point(174, 1);
+            this.BtnLogoff.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BtnLogoff.BackgroundImage = global::SIG.Properties.Resources.logoff;
+            this.BtnLogoff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnLogoff.Location = new System.Drawing.Point(149, 0);
             this.BtnLogoff.Name = "BtnLogoff";
             this.BtnLogoff.Size = new System.Drawing.Size(140, 40);
             this.BtnLogoff.TabIndex = 1;
             this.BtnLogoff.Text = "Logoff";
-            this.BtnLogoff.UseVisualStyleBackColor = true;
+            this.BtnLogoff.UseVisualStyleBackColor = false;
             this.BtnLogoff.Click += new System.EventHandler(this.button18_Click);
             // 
             // button5
             // 
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(367, 0);
+            this.button5.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button5.BackgroundImage = global::SIG.Properties.Resources.sair;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.Location = new System.Drawing.Point(295, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(140, 40);
             this.button5.TabIndex = 0;
             this.button5.Text = "Finalizar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // statusStrip1
@@ -511,7 +542,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::SIG.Properties.Resources.fundo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1232, 524);
@@ -536,8 +567,9 @@
             this.tabPage4.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -571,7 +603,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button BtnLogoff;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button21;
@@ -588,6 +619,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button BtnRelCompra;
         private System.Windows.Forms.Button button11;
-
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel7;
     }
 }

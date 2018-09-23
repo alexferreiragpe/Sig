@@ -86,12 +86,12 @@ namespace SGVB
             
         if (TxtPrecoCusto.Text == "")
             {
-                MessageBox.Show("Falta Preço de Custo!");
+                MessageBox.Show("Falta Preço de Custo!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtPrecoCusto.Focus();
             }
             else if (TxtQuant.Text == "")
             {
-                MessageBox.Show("Falta Quantidade!");
+                MessageBox.Show("Falta Quantidade!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtQuant.Focus();
             }
 
@@ -152,22 +152,22 @@ namespace SGVB
 
             if (TxtNotaFiscal.Text == "")
             {
-                MessageBox.Show("Falta Número Nota Fiscal!");
+                MessageBox.Show("Falta Número Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtNotaFiscal.Focus();
             }
             else if (TxtTotalNota.Text == "")
             {
-                MessageBox.Show("Falta Total da Nota Fiscal!");
+                MessageBox.Show("Falta Total da Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtTotalNota.Focus();
             }
             else if (CboFornecedor.Text == "" || CboFornecedor.Text == "Selecione")
             {
-                MessageBox.Show("Selecione o Fornecedor!", "SGDB", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione o Fornecedor!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CboFornecedor.Focus();
             }
             else if (dataGridView1.RowCount == 0)
             {
-                MessageBox.Show("Nenhum Item na Nota Fiscal!");
+                MessageBox.Show("Nenhum Item na Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtFabricante.Focus();            }
 
             else
@@ -182,11 +182,11 @@ namespace SGVB
                     comando.Connection = conn;
                     atualizaqtde.Connection = conn;
                     TotalProduto.Connection = conn;
-                    comando.CommandType = System.Data.CommandType.Text;
-                    atualizaqtde.CommandType = System.Data.CommandType.Text;
-                    TotalProduto.CommandType = System.Data.CommandType.Text;
-                    comando.CommandText = "INSERT INTO NotaFiscal(NotaFiscal,TotalNota,DataLanc,DataVenc,Fornecedor) VALUES ('" + TxtNotaFiscal.Text + "','" + TxtTotalNota.Text + "','" + DataLancNF.Value.ToString("dd/MM/yyyy") + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "','" + CboFornecedor.Text + "')";
-                    var sql = "INSERT INTO ItensNotaFiscal(Id_Produto,COD_EAN,Descricao,Quantidade,PrecoUnitario,Fabricante,NumeroNF,DataLanc) VALUES (@Id_Produto,@EAN,@Descricao,@Quantidade,@PrecoCusto,@Fabricante,'" + TxtNotaFiscal.Text + "','" + DataLancNF.Value.ToString("dd/MM/yyyy") + "')";
+                    comando.CommandType = CommandType.Text;
+                    atualizaqtde.CommandType = CommandType.Text;
+                    TotalProduto.CommandType = CommandType.Text;
+                    comando.CommandText = "INSERT INTO NotaFiscal(NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor,Id_Usuario) VALUES ('" + TxtNotaFiscal.Text + "','" + TxtTotalNota.Text + "','" + DateTime.Now + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "',(select Id_Fornecedor from Fornecedor where fornecedor.RazaoSocial='" + CboFornecedor.Text + "',(select id_usuario from usuario where usuario.usuario='" + CmbCadPor.Text + "')))";
+                    var sql = "INSERT INTO ItensNotaFiscal(Id_Produto,COD_EAN,Descricao,Quantidade,PrecoUnitario,Fabricante,NumeroNF,DataLanc) VALUES (@Id_Produto,@EAN,@Descricao,@Quantidade,@PrecoCusto,@Fabricante,'" + TxtNotaFiscal.Text + "','" + DateTime.Now + "')";
                     atualizaqtde.CommandText = (@"Update Produto set produto.qtde=10
                                                 from produto");
 
@@ -434,6 +434,29 @@ namespace SGVB
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+"))
                 e.Handled = true;
+        }
+
+        private void CmbCadPor_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand(@"select Id_usuario,Usuario from Usuario order by Usuario")
+            {
+                Connection = conn
+            };
+            try
+            {
+                conn.Open();
+                CmbCadPor.Items.Clear();
+                SqlDataReader Ler = cmd.ExecuteReader();
+                while (Ler.Read())
+                {
+                    CmbCadPor.Items.Add(Ler.GetValue(1));
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void TxtQuant_KeyPress_1(object sender, KeyPressEventArgs e)
