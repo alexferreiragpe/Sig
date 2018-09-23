@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCompraPedido));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbCadPor = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.BtnRemoverItem = new System.Windows.Forms.Button();
             this.LblTotalParcial = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNotaFiscal = new System.Windows.Forms.TextBox();
-            this.CmbCadPor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -106,6 +106,15 @@
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamento de Nota Fiscal";
+            // 
+            // CmbCadPor
+            // 
+            this.CmbCadPor.FormattingEnabled = true;
+            this.CmbCadPor.Location = new System.Drawing.Point(333, 41);
+            this.CmbCadPor.Name = "CmbCadPor";
+            this.CmbCadPor.Size = new System.Drawing.Size(147, 24);
+            this.CmbCadPor.TabIndex = 72;
+            this.CmbCadPor.Click += new System.EventHandler(this.CmbCadPor_Click);
             // 
             // label12
             // 
@@ -505,15 +514,6 @@
             this.TxtNotaFiscal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNotaFiscal_KeyPress);
             this.TxtNotaFiscal.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNotaFiscal_KeyUp);
             // 
-            // CmbCadPor
-            // 
-            this.CmbCadPor.FormattingEnabled = true;
-            this.CmbCadPor.Location = new System.Drawing.Point(333, 41);
-            this.CmbCadPor.Name = "CmbCadPor";
-            this.CmbCadPor.Size = new System.Drawing.Size(147, 24);
-            this.CmbCadPor.TabIndex = 72;
-            this.CmbCadPor.Click += new System.EventHandler(this.CmbCadPor_Click);
-            // 
             // FrmCompraPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -527,7 +527,6 @@
             this.Name = "FrmCompraPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIG - Compras - Pedido";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

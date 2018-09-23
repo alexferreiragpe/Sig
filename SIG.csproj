@@ -131,11 +131,11 @@
     <Compile Include="FrmCompraOrcamento.Designer.cs">
       <DependentUpon>FrmCompraOrcamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCompraPedido.cs">
+    <Compile Include="FrmCadCompraPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCompraPedido.Designer.cs">
-      <DependentUpon>FrmCompraPedido.cs</DependentUpon>
+    <Compile Include="FrmCadCompraPedido.Designer.cs">
+      <DependentUpon>FrmCadCompraPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConsClientes.cs">
       <SubType>Form</SubType>
@@ -185,11 +185,11 @@
     <Compile Include="FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVendaPedido.cs">
+    <Compile Include="FrmCadVenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmVendaPedido.Designer.cs">
-      <DependentUpon>FrmVendaPedido.cs</DependentUpon>
+    <Compile Include="FrmCadVenda.Designer.cs">
+      <DependentUpon>FrmCadVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,8 +220,8 @@
     <EmbeddedResource Include="FrmCompraOrcamento.resx">
       <DependentUpon>FrmCompraOrcamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCompraPedido.resx">
-      <DependentUpon>FrmCompraPedido.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadCompraPedido.resx">
+      <DependentUpon>FrmCadCompraPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsClientes.resx">
       <DependentUpon>FrmConsClientes.cs</DependentUpon>
@@ -247,8 +247,8 @@
     <EmbeddedResource Include="FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmVendaPedido.resx">
-      <DependentUpon>FrmVendaPedido.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadVenda.resx">
+      <DependentUpon>FrmCadVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
