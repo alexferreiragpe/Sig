@@ -138,6 +138,38 @@ namespace SGVB
                     MessageBox.Show("Erro ao Cadastrar Cliente!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                /*
+                 * 
+               VERIFICAR ERRO 
+
+
+                  string sql = "INSERT INTO NotaFiscalItens(Id_Produto,Qtd,Descricao,PrecoUnitario,NFNumero,Id_NotaFiscal) VALUES (@Id_Produto,@Qtd,@Descricao,@PrecoUnitario,@NfNumero,@Id_NotaFiscal)";
+                    UPDATEESTOQUE.CommandText = (@"Update Produto set produto.qtde=10 from produto");
+
+                    SqlCommand comandos = new SqlCommand(sql, conn);
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        comandos.Parameters.Clear();
+                        comandos.Parameters.AddWithValue("@Id_Produto",
+                            dataGridView1.Rows[i].Cells[0].Value);
+                        comandos.Parameters.AddWithValue("@Qtd",
+                            dataGridView1.Rows[i].Cells[1].Value);
+                        comandos.Parameters.AddWithValue("@Descricao",
+                            dataGridView1.Rows[i].Cells[2].Value);
+                        comandos.Parameters.AddWithValue("@PrecoUnitario",
+                            dataGridView1.Rows[i].Cells[3].Value);
+                        comandos.Parameters.AddWithValue("@NFNumero",
+                            dataGridView1.Rows[i].Cells[4].Value);                        
+                        comandos.Parameters.AddWithValue("@Id_NotaFiscal",
+                            dataGridView1.Rows[i].Cells[5].Value);
+                        comandos.ExecuteNonQuery();
+                    }
+
+                    UPDATEESTOQUE.ExecuteNonQuery();
+                    comandos.ExecuteNonQuery();
+                     */
+
+
                 LimpaDados();
                 TxtNome.Focus();
                 conn.Close();

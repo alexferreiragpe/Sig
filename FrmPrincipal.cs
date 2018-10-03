@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SGDB;
@@ -39,13 +40,15 @@ namespace SGVB
 
             if (Application.OpenForms.OfType<FrmCadCliente>().Count() > 0)
             {
-                MessageBox.Show("Cadastro de Cliente já está Aberto!");
+                MessageBox.Show("Cadastro de Cliente já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCadCliente CadCliente = new FrmCadCliente();
-                CadCliente.MdiParent = this;
+                FrmCadCliente CadCliente = new FrmCadCliente
+                {
+                    MdiParent = this
+                };
                 CadCliente.Show();
 
             }
@@ -55,13 +58,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmCadFornecedor>().Count() > 0)
             {
-                MessageBox.Show("Cadastro de Fornecedor já está Aberto!");
+                MessageBox.Show("Cadastro de Fornecedor já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCadFornecedor CadFornecedor = new FrmCadFornecedor();
-                CadFornecedor.MdiParent = this;
+                FrmCadFornecedor CadFornecedor = new FrmCadFornecedor
+                {
+                    MdiParent = this
+                };
                 CadFornecedor.Show();
             }
 
@@ -71,13 +76,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmCadProduto>().Count() > 0)
             {
-                MessageBox.Show("Cadastro de Produto já está Aberto!");
+                MessageBox.Show("Cadastro de Produto já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCadProduto CadProduto = new FrmCadProduto();
-                CadProduto.MdiParent = this;
+                FrmCadProduto CadProduto = new FrmCadProduto
+                {
+                    MdiParent = this
+                };
                 CadProduto.Show();
             }
         }
@@ -86,13 +93,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmCadUsuario>().Count() > 0)
             {
-                MessageBox.Show("Cadastro de Usuário já está Aberto!");
+                MessageBox.Show("Cadastro de Usuário já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCadUsuario CadUsuario = new FrmCadUsuario();
-                CadUsuario.MdiParent = this;
+                FrmCadUsuario CadUsuario = new FrmCadUsuario
+                {
+                    MdiParent = this
+                };
                 CadUsuario.Show();
             }
         }
@@ -101,13 +110,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmCompraPedido>().Count() > 0)
             {
-                MessageBox.Show("Pedido de Compra já está Aberto!");
+                MessageBox.Show("Pedido de Compra já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCompraPedido CompraPedido = new FrmCompraPedido();
-                CompraPedido.MdiParent = this;
+                FrmCompraPedido CompraPedido = new FrmCompraPedido
+                {
+                    MdiParent = this
+                };
                 CompraPedido.Show();
             }
         }
@@ -116,13 +127,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmCompraOrcamento>().Count() > 0)
             {
-                MessageBox.Show("Consulta Compras já está Aberto!");
+                MessageBox.Show("Consulta Compras já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmCompraOrcamento CompraOrcamento = new FrmCompraOrcamento();
-                CompraOrcamento.MdiParent = this;
+                FrmCompraOrcamento CompraOrcamento = new FrmCompraOrcamento
+                {
+                    MdiParent = this
+                };
                 CompraOrcamento.Show();
             }
         }
@@ -131,13 +144,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmVendaPedido>().Count() > 0)
             {
-                MessageBox.Show("Vendas já está Aberto!");
+                MessageBox.Show("Vendas já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmVendaPedido VendaPedido = new FrmVendaPedido();
-                VendaPedido.MdiParent = this;
+                FrmVendaPedido VendaPedido = new FrmVendaPedido
+                {
+                    MdiParent = this
+                };
                 VendaPedido.Show();
             }
         }
@@ -148,13 +163,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmEstoqueConsultar>().Count() > 0)
             {
-                MessageBox.Show("Consulta de Estoque já está Aberto!");
+                MessageBox.Show("Consulta de Estoque já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmEstoqueConsultar EstoqueConsultar = new FrmEstoqueConsultar();
-                EstoqueConsultar.MdiParent = this;
+                FrmEstoqueConsultar EstoqueConsultar = new FrmEstoqueConsultar
+                {
+                    MdiParent = this
+                };
                 EstoqueConsultar.Show();
             }
         }
@@ -162,7 +179,7 @@ namespace SGVB
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult res = MessageBox.Show(
-                "Deseja Fechar o Sistema?", "Fechar", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                "Deseja Fechar o Sistema?", "SIG", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (res == DialogResult.No)
                 e.Cancel = true;
         }
@@ -202,13 +219,15 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<FrmSobre>().Count() > 0)
             {
-                MessageBox.Show("Sobre já está Aberto!");
+                MessageBox.Show("Sobre já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmSobre Sobre = new FrmSobre();
-                Sobre.MdiParent = this;
+                FrmSobre Sobre = new FrmSobre
+                {
+                    MdiParent = this
+                };
                 Sobre.Show();
 
             }
@@ -216,31 +235,43 @@ namespace SGVB
 
         private void button18_Click(object sender, EventArgs e)
         {
-            FrmPrincipal prin = new FrmPrincipal();
-            FrmLogin Logout = new FrmLogin();
-            Logout.Show();
-            this.Hide();
-            this.Show();
-
-
+            Application.Restart();
+            this.Close();
+           
         }
 
         private void BtnVendaConsulta_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms.OfType<FrmConsItemVenda>().Count() > 0)
             {
-                MessageBox.Show("Consulta de Vendas já esta Aberta!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Consulta de Vendas já esta Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                FrmConsItemVenda VendaConsulta = new FrmConsItemVenda();
-                VendaConsulta.MdiParent = this;
+                FrmConsItemVenda VendaConsulta = new FrmConsItemVenda
+                {
+                    MdiParent = this
+                };
                 VendaConsulta.Show();
 
             }
             
 
+        }
+
+        private void BtnConsultaNF_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<SIG.FrmConsNotaEntrada>().Count() > 0)
+            {
+                MessageBox.Show("Consulta Nota Fiscal já está Aberto!");
+
+            }
+            else
+            {
+                SIG.FrmConsNotaEntrada ConsNotaFiscalEntrada = new SIG.FrmConsNotaEntrada();
+                ConsNotaFiscalEntrada.Show();
+            }
         }
     }
 }

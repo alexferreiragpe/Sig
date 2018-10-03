@@ -153,6 +153,8 @@
             this.CboCadPor.TabIndex = 13;
             this.CboCadPor.Text = "Selecione";
             this.CboCadPor.Click += new System.EventHandler(this.CboCadPor_Click);
+            this.CboCadPor.Enter += new System.EventHandler(this.CboCadPor_Enter);
+            this.CboCadPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboCadPor_KeyPress);
             // 
             // label10
             // 
@@ -243,7 +245,6 @@
             this.TxtPrecoCompra.Name = "TxtPrecoCompra";
             this.TxtPrecoCompra.Size = new System.Drawing.Size(148, 20);
             this.TxtPrecoCompra.TabIndex = 4;
-            this.TxtPrecoCompra.Text = "R$";
             // 
             // label1
             // 
@@ -395,7 +396,6 @@
             this.TxtPrecoVenda.Name = "TxtPrecoVenda";
             this.TxtPrecoVenda.Size = new System.Drawing.Size(148, 20);
             this.TxtPrecoVenda.TabIndex = 5;
-            this.TxtPrecoVenda.Text = "R$";
             // 
             // TxtEstoqueMax
             // 

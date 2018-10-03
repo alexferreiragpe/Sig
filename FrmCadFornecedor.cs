@@ -136,11 +136,13 @@ namespace SGVB
                 conn.Open();
                 try
                 {
-                    
-                    SqlCommand comando = new SqlCommand();
-                    comando.CommandType = CommandType.Text;
-                    comando.CommandText = "INSERT INTO Fornecedor(RazaoSocial,CNPJ,NomeFantasia,IE,Endereco,TipoPessoa,Cidade,Bairro,Estado,Cep,FoneFixo,FoneComercial,Celular,Site,Email,DataCad,Id_Usuario) VALUES ('" + TxtRazao.Text + "','" + MktCNPJ.Text + "','" + TxtNomeFan.Text + "','" + MktIE.Text + "','" + TxtEndereco.Text + "','" + CboTipoPessoa.Text + "','" + TxtCidade.Text + "','" + TxtBairro.Text + "','" + CboEstado.Text + "','" + MktCep.Text + "','" + MktFoneFixo.Text + "','" + MktFoneComercial.Text + "','" + MktCelular.Text + "','" + TxtHomePage.Text + "','" + TxtEmail.Text + "','" + DateTime.Now + "',(select id_usuario from usuario where usuario.usuario='" + CboCadPor.Text + "'))";
-                    comando.Connection = conn;
+
+                    SqlCommand comando = new SqlCommand
+                    {
+                        CommandType = CommandType.Text,
+                        CommandText = "INSERT INTO Fornecedor(RazaoSocial,CNPJ,NomeFantasia,IE,Endereco,TipoPessoa,Cidade,Bairro,Estado,Cep,FoneFixo,FoneComercial,Celular,Site,Email,DataCad,Id_Usuario) VALUES ('" + TxtRazao.Text + "','" + MktCNPJ.Text + "','" + TxtNomeFan.Text + "','" + MktIE.Text + "','" + TxtEndereco.Text + "','" + CboTipoPessoa.Text + "','" + TxtCidade.Text + "','" + TxtBairro.Text + "','" + CboEstado.Text + "','" + MktCep.Text + "','" + MktFoneFixo.Text + "','" + MktFoneComercial.Text + "','" + MktCelular.Text + "','" + TxtHomePage.Text + "','" + TxtEmail.Text + "','" + DateTime.Now + "',(select id_usuario from usuario where usuario.usuario='" + CboCadPor.Text + "'))",
+                        Connection = conn
+                    };
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Fornecedor Cadastrado com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }

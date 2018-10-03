@@ -25,8 +25,10 @@ namespace SGDB
             var sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
             var dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            var bindigSource = new BindingSource();
-            bindigSource.DataSource = dataTable;
+            var bindigSource = new BindingSource
+            {
+                DataSource = dataTable
+            };
             DGVConsUsuarios.DataSource = bindigSource;
 
         }

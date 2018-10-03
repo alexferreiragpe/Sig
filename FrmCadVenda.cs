@@ -309,10 +309,12 @@ namespace SGVB
                 try
                 {
                     conn.Open();
-                    SqlCommand comando = new SqlCommand();
-                    comando.CommandType = System.Data.CommandType.Text;
-                    comando.CommandText = "INSERT INTO Venda(CodCliente,NomeCliente,Data,Valor,FormaPag) VALUES ('" + TxtCodCliente.Text + "','" + TxtNome.Text + "', '" + dateTimePicker1.Value.ToString("dd/MM/yyyy") + "','" + TotalProdutos + "','" + CboFormaPag.Text + "')";
-                    comando.Connection = conn;
+                    SqlCommand comando = new SqlCommand
+                    {
+                        CommandType = System.Data.CommandType.Text,
+                        CommandText = "INSERT INTO Venda(CodCliente,NomeCliente,Data,Valor,FormaPag) VALUES ('" + TxtCodCliente.Text + "','" + TxtNome.Text + "', '" + dateTimePicker1.Value.ToString("dd/MM/yyyy") + "','" + TotalProdutos + "','" + CboFormaPag.Text + "')",
+                        Connection = conn
+                    };
                     comando.ExecuteNonQuery();
                     var sql = "INSERT INTO VendaItens(Id_Venda,Id_Cliente,ProdutoCodEan,Descricao,Valor_Unit,Qtde,Total_Item) VALUES ('" + TxtCodVenda.Text + "','" + TxtCodCliente.Text + "',@Codigo,@Descricao, @Valor_Unit,@Qtde, @Total_Item)";
                     SqlCommand comandos = new SqlCommand(sql, conn);
@@ -334,10 +336,12 @@ namespace SGVB
 
                     }
 
-                    SqlCommand atualizaestoque = new SqlCommand();
-                    atualizaestoque.CommandType = System.Data.CommandType.Text;
-                    atualizaestoque.CommandText = (@"Update Produto set  Produto.Qtde=(Produto.Qtde-VendaItens.Qtde) from Produto inner join VendaItens on Produto.CodEAN=VendaItens.ProdutoCodEan");
-                    atualizaestoque.Connection = conn;
+                    SqlCommand atualizaestoque = new SqlCommand
+                    {
+                        CommandType = System.Data.CommandType.Text,
+                        CommandText = (@"Update Produto set  Produto.Qtde=(Produto.Qtde-VendaItens.Qtde) from Produto inner join VendaItens on Produto.CodEAN=VendaItens.ProdutoCodEan"),
+                        Connection = conn
+                    };
                     atualizaestoque.ExecuteNonQuery();
                     conn.Close();
                     LimpaVenda();

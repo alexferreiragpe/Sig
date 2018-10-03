@@ -86,9 +86,9 @@ CREATE TABLE [dbo].[Produto](
 	[Qtd] [int] NOT NULL,
 	[EAN] [varchar](20) NOT NULL,
 	[Categoria] [varchar](50) NOT NULL,
-	[PrecoCompra] [float] NOT NULL,
+	[PrecoCompra] [decimal](19,2) NOT NULL,
 	[Lucro] [float] NOT NULL,
-	[PrecoVenda] [float] NOT NULL,
+	[PrecoVenda] [decimal](19,2) NOT NULL,
 	[SubCateg] [varchar](50) NOT NULL,
 	[EstoqueMin] [int] NOT NULL,
 	[EstoqueMax] [int] NOT NULL,
@@ -172,7 +172,7 @@ GO
 CREATE TABLE [dbo].[NotaFiscal](
 	[Id_NotaFiscal] [int] IDENTITY(1,1) NOT NULL,
 	[NotaFiscalNumero] [int] NOT NULL,
-	[TotalNota] [float] NOT NULL,
+	[TotalNota]  [decimal](19,2) NOT NULL,
 	[DataLanc] [datetime] NOT NULL,
 	[DataVenc] [date] NOT NULL,
 	[Id_Fornecedor] [int] NOT NULL,
@@ -208,19 +208,19 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Usuario que La
 GO
 
 
-/****** Object:  Table [dbo].[ItensNotaFiscal]    Script Date: 15/09/2018 16:25:47 ******/
+/****** Object:  Table [dbo].[NotaFiscalItens]    Script Date: 15/09/2018 16:25:47 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ItensNotaFiscal](
+CREATE TABLE [dbo].[NotaFiscalItens](
 	[Id_ItemNotaFiscal] [int] IDENTITY(1,1) NOT NULL,
 	[Id_Produto] [int] NOT NULL,
 	[Qtd] [int] NOT NULL,
 	[Descricao] [varchar](50) NOT NULL,
-	[PrecoUnitario] [money] NOT NULL,
+	[PrecoUnitario] [decimal](19,2) NOT NULL,
 	[NFNumero][int] NOT NULL,
 	[Id_NotaFiscal] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
@@ -230,26 +230,26 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[ItensNotaFiscal]  WITH CHECK ADD  CONSTRAINT [FK_ItensNotaFiscal_NotaFiscal] FOREIGN KEY([Id_NotaFiscal])
+ALTER TABLE [dbo].[NotaFiscalItens]  WITH CHECK ADD  CONSTRAINT [FK_NotaFiscalItens_NotaFiscal] FOREIGN KEY([Id_NotaFiscal])
 REFERENCES [dbo].[NotaFiscal] ([Id_NotaFiscal])
 GO
 
-ALTER TABLE [dbo].[ItensNotaFiscal] CHECK CONSTRAINT [FK_ItensNotaFiscal_NotaFiscal]
+ALTER TABLE [dbo].[NotaFiscalItens] CHECK CONSTRAINT [FK_NotaFiscalItens_NotaFiscal]
 GO
 
-ALTER TABLE [dbo].[ItensNotaFiscal]  WITH CHECK ADD  CONSTRAINT [FK_ItensNotaFiscal_Produto] FOREIGN KEY([Id_Produto])
+ALTER TABLE [dbo].[NotaFiscalItens]  WITH CHECK ADD  CONSTRAINT [FK_NotaFiscalItens_Produto] FOREIGN KEY([Id_Produto])
 REFERENCES [dbo].[Produto] ([Id_Produto])
 ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
 
-ALTER TABLE [dbo].[ItensNotaFiscal] CHECK CONSTRAINT [FK_ItensNotaFiscal_Produto]
+ALTER TABLE [dbo].[NotaFiscalItens] CHECK CONSTRAINT [FK_NotaFiscalItens_Produto]
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Itens da Nota Fiscal' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ItensNotaFiscal', @level2type=N'CONSTRAINT',@level2name=N'FK_ItensNotaFiscal_NotaFiscal'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Itens da Nota Fiscal' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'NotaFiscalItens', @level2type=N'CONSTRAINT',@level2name=N'FK_NotaFiscalItens_NotaFiscal'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Itens Nota Fiscal pode ter vários Produtos' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ItensNotaFiscal', @level2type=N'CONSTRAINT',@level2name=N'FK_ItensNotaFiscal_Produto'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Itens Nota Fiscal pode ter vários Produtos' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'NotaFiscalItens', @level2type=N'CONSTRAINT',@level2name=N'FK_NotaFiscalItens_Produto'
 GO
 
 
@@ -265,7 +265,7 @@ CREATE TABLE [dbo].[Venda](
 	[Id_Venda] [int] IDENTITY(1,1) NOT NULL,
 	[Id_Cliente] [int] NOT NULL,
 	[DataVenda] [datetime] NOT NULL,
-	[Total] [money] NOT NULL,
+	[Total]  [decimal](19,2) NOT NULL,
 	[FormaPag] [varchar](50) NOT NULL,
 	[Id_Usuario] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
@@ -310,9 +310,9 @@ CREATE TABLE [dbo].[VendaItens](
 	[Id_Venda] [int] NOT NULL,
 	[Id_Produto] [int] NOT NULL,
 	[Descricao] [varchar](50) NOT NULL,
-	[Valor_Unit] [money] NOT NULL,
+	[Valor_Unit]  [decimal](19,2) NOT NULL,
 	[Qtd] [int] NOT NULL,
-	[Total_Item] [money] NOT NULL,
+	[Total_Item] [decimal](19,2) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id_VendaItem] ASC

@@ -165,6 +165,11 @@ namespace SGVB
                 MessageBox.Show("Selecione o Fornecedor!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CboFornecedor.Focus();
             }
+            else if (CmbCadPor.Text == "Selecione")
+            {
+                MessageBox.Show("Selecione o Usuário", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CmbCadPor.Focus();
+            }
             else if (dataGridView1.RowCount == 0)
             {
                 MessageBox.Show("Nenhum Item na Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -175,53 +180,32 @@ namespace SGVB
                 try
                 {
                     conn.Open();
-                    SqlCommand comando = new SqlCommand();
-                    SqlCommand atualizaqtde = new SqlCommand();
-                    SqlCommand TotalProduto = new SqlCommand();
-
-                    comando.Connection = conn;
-                    atualizaqtde.Connection = conn;
-                    TotalProduto.Connection = conn;
-                    comando.CommandType = CommandType.Text;
-                    atualizaqtde.CommandType = CommandType.Text;
-                    TotalProduto.CommandType = CommandType.Text;
-                    comando.CommandText = "INSERT INTO NotaFiscal(NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor,Id_Usuario) VALUES ('" + TxtNotaFiscal.Text + "','" + TxtTotalNota.Text + "','" + DateTime.Now + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "',(select Id_Fornecedor from Fornecedor where fornecedor.RazaoSocial='" + CboFornecedor.Text + "',(select id_usuario from usuario where usuario.usuario='" + CmbCadPor.Text + "')))";
-                    var sql = "INSERT INTO ItensNotaFiscal(Id_Produto,COD_EAN,Descricao,Quantidade,PrecoUnitario,Fabricante,NumeroNF,DataLanc) VALUES (@Id_Produto,@EAN,@Descricao,@Quantidade,@PrecoCusto,@Fabricante,'" + TxtNotaFiscal.Text + "','" + DateTime.Now + "')";
-                    atualizaqtde.CommandText = (@"Update Produto set produto.qtde=10
-                                                from produto");
-
-                    SqlCommand comandos = new SqlCommand(sql, conn);
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    SqlCommand INSERIR = new SqlCommand
                     {
-                        comandos.Parameters.Clear();
-                        comandos.Parameters.AddWithValue("@Id_Produto",
-                            dataGridView1.Rows[i].Cells[0].Value);
-                        comandos.Parameters.AddWithValue("@EAN",
-                            dataGridView1.Rows[i].Cells[1].Value);
-                        comandos.Parameters.AddWithValue("@Descricao",
-                            dataGridView1.Rows[i].Cells[2].Value);
-                        comandos.Parameters.AddWithValue("@Quantidade",
-                            dataGridView1.Rows[i].Cells[3].Value);
-                        comandos.Parameters.AddWithValue("@PrecoCusto",
-                            dataGridView1.Rows[i].Cells[4].Value);                        
-                        comandos.Parameters.AddWithValue("@Fabricante",
-                            dataGridView1.Rows[i].Cells[5].Value);
-                        comandos.ExecuteNonQuery();
-                    }
-                    comando.ExecuteNonQuery();
-                    atualizaqtde.ExecuteNonQuery();
-                    comandos.ExecuteNonQuery();
-                    conn.Close();
+                        //SqlCommand UPDATEESTOQUE = new SqlCommand();
+
+                        Connection = conn,
+                        // UPDATEESTOQUE.Connection = conn;
+
+                        CommandType = CommandType.Text,
+                        //UPDATEESTOQUE.CommandType = CommandType.Text;
+
+                        CommandText = "INSERT INTO NotaFiscal(NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor,Id_Usuario) VALUES ('" +TxtNotaFiscal.Text+ "','" +TxtTotalNota.Text.Replace(',', '.') + "','" + DateTime.Now + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "',(select Id_Fornecedor from Fornecedor where fornecedor.RazaoSocial='" + CboFornecedor.Text + "'),(select id_usuario from usuario where usuario.usuario='" + CmbCadPor.Text + "'))"
+                    };
+
+                    INSERIR.ExecuteNonQuery();
+                   
                     MessageBox.Show("Nota Fiscal Gravada com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpaCampos();
+                    
 
 
                 }
                 catch
                 {
                     MessageBox.Show("Erro ao Gravar Nota Fiscal! Verifique.","SIG",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    conn.Close();
-                }
+                                   }
+                conn.Close();
+                LimpaCampos();
             }
         }
 
@@ -230,8 +214,10 @@ namespace SGVB
 
         private void CboFornecedor_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand(@"select Id_Fornecedor,RazaoSocial from Fornecedor order by RazaoSocial");
-            cmd.Connection = conn;
+            SqlCommand cmd = new SqlCommand(@"select Id_Fornecedor,RazaoSocial from Fornecedor order by RazaoSocial")
+            {
+                Connection = conn
+            };
             try
             {
                 conn.Open();
@@ -251,14 +237,14 @@ namespace SGVB
 
         private void BtnConsultar_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<SGDB.FrmConsNotaFiscalEntrada>().Count() > 0)
+            if (Application.OpenForms.OfType<SIG.FrmConsNotaEntrada>().Count() > 0)
             {
                 MessageBox.Show("Consulta Nota Fiscal já está Aberto!");
 
             }
             else
             {
-                SGDB.FrmConsNotaFiscalEntrada ConsNotaFiscalEntrada = new SGDB.FrmConsNotaFiscalEntrada();
+                SIG.FrmConsNotaEntrada ConsNotaFiscalEntrada = new SIG.FrmConsNotaEntrada();
                 ConsNotaFiscalEntrada.Show();
             }
 
@@ -276,14 +262,14 @@ namespace SGVB
                 }
                 else
                 {
-                    string cadSql = "SELECT * from NotaFiscal where NotaFiscal='" + TxtNotaFiscal.Text + "'";
+                    string cadSql = "SELECT * from NotaFiscal where NotaFiscalNumero='" + TxtNotaFiscal.Text + "'";
                     SqlCommand comand = new SqlCommand(cadSql, conn);
                     conn.Open();
                     SqlDataReader ler = comand.ExecuteReader();
                     if (ler.Read() == true)
                     {
                         TxtTotalNota.Text = ler["TotalNota"].ToString();
-                        CboFornecedor.Text = ler["Fornecedor"].ToString();
+                        CboFornecedor.Text = ler["Id_Fornecedor"].ToString();
                         DataVencNF.Text = ler["DataVenc"].ToString();
                         ler.Close();
                         CarregaGrid();

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -15,6 +10,8 @@ namespace SGVB
     {
 
         private SqlConnection conn = ConexaoBanco.sqlConnection;
+
+        public string P { get; private set; }
 
         public FrmCadProduto()
         {
@@ -155,7 +152,7 @@ namespace SGVB
                     SqlCommand comando = new SqlCommand
                     {
                         CommandType = CommandType.Text,
-                        CommandText = "INSERT INTO Produto(Descricao,Qtd,EAN,Categoria,PrecoCompra,Lucro,PrecoVenda,SubCateg,EstoqueMin,EstoqueMax,Fabricante,ICMS,IPI,Unidade,DataCad,Id_Usuario) VALUES ('" + TxtDescri.Text + "','" + 0 + "','" + TxtCodEan.Text + "','" + CboCategoria.Text + "','" + TxtPrecoCompra.Text + "','" + TxtLucro.Text + "','" + TxtPrecoVenda.Text + "','" + CboSubCat.Text + "','" + TxtEstoqueMin.Text + "','" + TxtEstoqueMax.Text + "','" + CboFabricante.Text + "','" + TxtICMS.Text + "','" + TxtIPI.Text + "','" + CboUnidade.Text + "','" + DateTime.Now + "',(select id_usuario from usuario where usuario.usuario='" + CboCadPor.Text + "'))",
+                        CommandText = "INSERT INTO Produto(Descricao,Qtd,EAN,Categoria,PrecoCompra,Lucro,PrecoVenda,SubCateg,EstoqueMin,EstoqueMax,Fabricante,ICMS,IPI,Unidade,DataCad,Id_Usuario) VALUES ('" + TxtDescri.Text + "','" + 0 + "','" + TxtCodEan.Text + "','" + CboCategoria.Text + "','" +TxtPrecoCompra.Text.Replace(',','.') + "','" +TxtLucro.Text + "','" + TxtPrecoVenda.Text.Replace(',', '.') + "','" + CboSubCat.Text + "','" + TxtEstoqueMin.Text + "','" + TxtEstoqueMax.Text + "','" + CboFabricante.Text + "','" + TxtICMS.Text + "','" + TxtIPI.Text + "','" + CboUnidade.Text + "','" + DateTime.Now + "',(select id_usuario from usuario where usuario.usuario='" + CboCadPor.Text + "'))",
                         Connection = conn
                     };
                     comando.ExecuteNonQuery();
@@ -201,10 +198,7 @@ namespace SGVB
                 conn.Open();
                 try
                 {
-                    Double P;
-                    P= Convert.ToDouble(TxtPrecoCompra.Text);
-
-                    SqlCommand comando = new SqlCommand(@"UPDATE Produto SET Descricao='" + TxtDescri.Text + "', EAN='" + TxtCodEan.Text + "',Categoria='" + CboCategoria.Text + "',PrecoCompra='" + P + "',Lucro='" + TxtLucro.Text + "',PrecoVenda='" + TxtPrecoVenda.Text + "',SubCateg='" + CboSubCat.Text + "',EstoqueMin='" + TxtEstoqueMin.Text + "',EstoqueMax='" + TxtEstoqueMax.Text + "',Fabricante='" + CboFabricante.Text + "',ICMS='" + TxtICMS.Text + "',IPI='" + TxtIPI.Text + "',Unidade='" + CboUnidade.Text + "' where (Id_Produto='" + TxtCodProduto.Text + "')", conn)
+                    SqlCommand comando = new SqlCommand(@"UPDATE Produto SET Descricao='" + TxtDescri.Text + "', EAN='" + TxtCodEan.Text + "',Categoria='" + CboCategoria.Text + "',PrecoCompra='" + TxtPrecoCompra.Text.Replace(',', '.') + "',Lucro='" + TxtLucro.Text + "',PrecoVenda='" +TxtPrecoVenda.Text.Replace(',', '.') + "',SubCateg='" + CboSubCat.Text + "',EstoqueMin='" + TxtEstoqueMin.Text + "',EstoqueMax='" + TxtEstoqueMax.Text + "',Fabricante='" + CboFabricante.Text + "',ICMS='" + TxtICMS.Text + "',IPI='" + TxtIPI.Text + "',Unidade='" + CboUnidade.Text + "' where (Id_Produto='" + TxtCodProduto.Text + "')", conn)
                     {
                         CommandType = CommandType.Text
                     };
@@ -230,7 +224,7 @@ namespace SGVB
         {
             if (TxtCodProduto.Text == "")
             {
-                MessageBox.Show("Favor Digitar Código Produto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Digite Código Produto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -243,17 +237,14 @@ namespace SGVB
                         CommandType = CommandType.Text
                     };
                     comando.ExecuteNonQuery();
-                    LimpaDados();
                     MessageBox.Show("Produto Deletado com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
                 }
 
                 catch
                 {
                     MessageBox.Show("Erro ao Deletar Produto! Tente Novamente.", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
+                    
                 }
             }
 
@@ -298,7 +289,10 @@ namespace SGVB
                 else
                 {
                     conn.Open();
-                    string cadSql = "SELECT * from Produto inner join usuario on Produto.id_Usuario=usuario.Id_usuario where Id_Produto='" + TxtCodProduto.Text + "'";
+                    string cadSql = "SELECT * from Produto inner join usuario" +
+                        " on Produto.id_Usuario=usuario.Id_usuario" +
+                        " where Id_Produto='" + TxtCodProduto.Text + "'";
+
                     SqlCommand comand = new SqlCommand(cadSql, conn);
                     SqlDataReader ler = comand.ExecuteReader();
                     if (ler.Read() == true)
@@ -306,7 +300,7 @@ namespace SGVB
                         TxtDescri.Text = ler["Descricao"].ToString();
                         TxtCodEan.Text = ler["EAN"].ToString();
                         CboCategoria.Text = ler["Categoria"].ToString();
-                        TxtPrecoCompra.Text = ler["PrecoCompra"].ToString();
+                        TxtPrecoCompra.Text = ler[("PRECOCOMPRA")].ToString();
                         TxtLucro.Text = ler["Lucro"].ToString();
                         TxtPrecoVenda.Text = ler["PrecoVenda"].ToString();
                         CboSubCat.Text = ler["SubCateg"].ToString();
@@ -365,8 +359,6 @@ namespace SGVB
                 e.Handled = true;
         }
 
-
-
         private void TxtICMS_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+"))
@@ -385,13 +377,50 @@ namespace SGVB
                 e.Handled = true;
         }
 
-       /* private void TxtPrecoCompra_Leave(object sender, EventArgs e)
+        private void CboCadPor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Double value;
-            if (Double.TryParse(TxtPrecoCompra.Text, out value))
-                TxtPrecoCompra.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", value);
-            else
-                TxtPrecoCompra.Text = String.Empty;
-        }*/
+            SqlCommand cmd = new SqlCommand(@"select Id_usuario,Usuario from Usuario order by Usuario")
+            {
+                Connection = conn
+            };
+            try
+            {
+                conn.Open();
+                CboCadPor.Items.Clear();
+                SqlDataReader Ler = cmd.ExecuteReader();
+                while (Ler.Read())
+                {
+                    CboCadPor.Items.Add(Ler.GetValue(1));
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CboCadPor_Enter(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand(@"select Id_usuario,Usuario from Usuario order by Usuario")
+            {
+                Connection = conn
+            };
+            try
+            {
+                conn.Open();
+                CboCadPor.Items.Clear();
+                SqlDataReader Ler = cmd.ExecuteReader();
+                while (Ler.Read())
+                {
+                    CboCadPor.Items.Add(Ler.GetValue(1));
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

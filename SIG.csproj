@@ -55,14 +55,12 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <StartupObject>SGVB.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-      <HintPath>C:\Users\alexf\Downloads\ReportViewer\SourceDir\Windows\Gac\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
@@ -77,17 +75,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexaoBanco.cs" />
-    <Compile Include="FrmConsItemVenda.cs">
+    <Compile Include="FrmConsNotaEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmConsItemVenda.Designer.cs">
-      <DependentUpon>FrmConsItemVenda.cs</DependentUpon>
+    <Compile Include="FrmConsNotaEntrada.Designer.cs">
+      <DependentUpon>FrmConsNotaEntrada.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmConsNotaFiscalEntrada.cs">
+    <Compile Include="FrmConsVendaItens.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmConsNotaFiscalEntrada.Designer.cs">
-      <DependentUpon>FrmConsNotaFiscalEntrada.cs</DependentUpon>
+    <Compile Include="FrmConsVendaItens.Designer.cs">
+      <DependentUpon>FrmConsVendaItens.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConsProduto.cs">
       <SubType>Form</SubType>
@@ -125,11 +123,11 @@
     <Compile Include="FrmCadUsuario.Designer.cs">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCompraOrcamento.cs">
+    <Compile Include="FrmConsNotaEntradaItens.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCompraOrcamento.Designer.cs">
-      <DependentUpon>FrmCompraOrcamento.cs</DependentUpon>
+    <Compile Include="FrmConsNotaEntradaItens.Designer.cs">
+      <DependentUpon>FrmConsNotaEntradaItens.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCadCompraPedido.cs">
       <SubType>Form</SubType>
@@ -155,11 +153,11 @@
     <Compile Include="FrmEsqueciSenha.Designer.cs">
       <DependentUpon>FrmEsqueciSenha.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEstoqueConsultar.cs">
+    <Compile Include="FrmConsEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEstoqueConsultar.Designer.cs">
-      <DependentUpon>FrmEstoqueConsultar.cs</DependentUpon>
+    <Compile Include="FrmConsEstoque.Designer.cs">
+      <DependentUpon>FrmConsEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -193,11 +191,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmConsItemVenda.resx">
-      <DependentUpon>FrmConsItemVenda.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConsNotaEntrada.resx">
+      <DependentUpon>FrmConsNotaEntrada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmConsNotaFiscalEntrada.resx">
-      <DependentUpon>FrmConsNotaFiscalEntrada.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConsVendaItens.resx">
+      <DependentUpon>FrmConsVendaItens.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsProduto.resx">
       <DependentUpon>FrmConsProduto.cs</DependentUpon>
@@ -217,8 +215,8 @@
     <EmbeddedResource Include="FrmCadUsuario.resx">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCompraOrcamento.resx">
-      <DependentUpon>FrmCompraOrcamento.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConsNotaEntradaItens.resx">
+      <DependentUpon>FrmConsNotaEntradaItens.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadCompraPedido.resx">
       <DependentUpon>FrmCadCompraPedido.cs</DependentUpon>
@@ -232,8 +230,8 @@
     <EmbeddedResource Include="FrmEsqueciSenha.resx">
       <DependentUpon>FrmEsqueciSenha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEstoqueConsultar.resx">
-      <DependentUpon>FrmEstoqueConsultar.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConsEstoque.resx">
+      <DependentUpon>FrmConsEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

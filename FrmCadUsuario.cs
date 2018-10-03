@@ -230,8 +230,10 @@ namespace SGVB
                 try
                 {
                     conn.Open();
-                    SqlCommand comando = new SqlCommand(@"UPDATE Usuario SET Nome='" + TxtNome.Text + "',Email='" + TxtEmail.Text + "',Usuario='" + TxtUsuario.Text + "',Senha='" + TxtSenha.Text + "',Tipo='" + CboTipoUsuario.Text + "' where (Id_Usuario='" + TxtIdUsuario.Text + "')", conn);
-                    comando.CommandType = System.Data.CommandType.Text;
+                    SqlCommand comando = new SqlCommand(@"UPDATE Usuario SET Nome='" + TxtNome.Text + "',Email='" + TxtEmail.Text + "',Usuario='" + TxtUsuario.Text + "',Senha='" + TxtSenha.Text + "',Tipo='" + CboTipoUsuario.Text + "' where (Id_Usuario='" + TxtIdUsuario.Text + "')", conn)
+                    {
+                        CommandType = System.Data.CommandType.Text
+                    };
                     comando.ExecuteNonQuery();
                     LimpaDados();
                     TxtIdUsuario.Clear();
@@ -262,8 +264,10 @@ namespace SGVB
                 try
                 {
                     conn.Open();
-                    SqlCommand comando = new SqlCommand(@"DELETE FROM Usuario  where (Id_Usuario='" + TxtIdUsuario.Text + "')", conn);
-                    comando.CommandType = System.Data.CommandType.Text;
+                    SqlCommand comando = new SqlCommand(@"DELETE FROM Usuario  where (Id_Usuario='" + TxtIdUsuario.Text + "')", conn)
+                    {
+                        CommandType = System.Data.CommandType.Text
+                    };
                     comando.ExecuteNonQuery();
                     LimpaDados();
                     TxtIdUsuario.Clear();

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -24,7 +18,8 @@ namespace SGDB
         private void CarregaGrid()
         {
 
-            var sqlDataAdapter = new SqlDataAdapter("select NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor as Fornecedor,usuario as CadastradoPor from NotaFiscal inner join usuario on notafiscal.Id_usuario=Usuario.Id_usuario order by NotaFiscal",conn);
+            var sqlDataAdapter = new SqlDataAdapter("select NotaFiscalNumero,TotalNota,DataLanc,DataVenc,RazaoSocial as Fornecedor,usuario as Usuário from NotaFiscal NF inner join usuario on Nf.Id_usuario=Usuario.Id_usuario " +
+                "inner join fornecedor F on Nf.id_fornecedor=F.Id_fornecedor order by DataLanc",conn);
             var sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
             var dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

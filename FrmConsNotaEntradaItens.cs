@@ -23,12 +23,14 @@ namespace SGVB
 
         private void CarregaGrid()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select distinct NotaFiscalNumero as Nota_Fiscal,Id_Produto,Descricao,Qtd,PrecoUnitario as Preço_Unitário,Id_Fornecedor as Fornecedor,dataLanc as Data_Lanc from NotaFiscal inner join ItensNotaFiscal on NotaFiscal.NotaFiscalNumero=ItensNotaFiscal.NFNumero order by NotaFiscal.NotaFiscalNumero", conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select distinct NotaFiscalNumero as Nota_Fiscal,Id_Produto,Descricao,Qtd,PrecoUnitario as Preço_Unitário,Id_Fornecedor as Fornecedor,dataLanc as Data_Lanc from NotaFiscal inner join NotaFiscalItens on NotaFiscal.NotaFiscalNumero=NotaFiscalItens.NFNumero order by NotaFiscal.NotaFiscalNumero", conn);
             SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            BindingSource bindigSource = new BindingSource();
-            bindigSource.DataSource = dataTable;
+            BindingSource bindigSource = new BindingSource
+            {
+                DataSource = dataTable
+            };
             dataGridView1.DataSource = bindigSource;
         }
         private void FrmCompraOrcamento_Load(object sender, EventArgs e)

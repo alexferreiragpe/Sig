@@ -113,7 +113,8 @@
             this.CmbCadPor.Location = new System.Drawing.Point(333, 41);
             this.CmbCadPor.Name = "CmbCadPor";
             this.CmbCadPor.Size = new System.Drawing.Size(147, 24);
-            this.CmbCadPor.TabIndex = 72;
+            this.CmbCadPor.TabIndex = 1;
+            this.CmbCadPor.Text = "Selecione";
             this.CmbCadPor.Click += new System.EventHandler(this.CmbCadPor_Click);
             // 
             // label12
@@ -132,7 +133,7 @@
             this.BtnRemoverItem.Location = new System.Drawing.Point(506, 272);
             this.BtnRemoverItem.Name = "BtnRemoverItem";
             this.BtnRemoverItem.Size = new System.Drawing.Size(220, 39);
-            this.BtnRemoverItem.TabIndex = 8;
+            this.BtnRemoverItem.TabIndex = 10;
             this.BtnRemoverItem.Text = "Remover Produto";
             this.BtnRemoverItem.UseVisualStyleBackColor = true;
             this.BtnRemoverItem.Click += new System.EventHandler(this.BtnRemoverItem_Click);
@@ -160,7 +161,7 @@
             this.BtnLimpar.Location = new System.Drawing.Point(515, 558);
             this.BtnLimpar.Name = "BtnLimpar";
             this.BtnLimpar.Size = new System.Drawing.Size(100, 31);
-            this.BtnLimpar.TabIndex = 12;
+            this.BtnLimpar.TabIndex = 14;
             this.BtnLimpar.Text = "Limpar";
             this.BtnLimpar.UseVisualStyleBackColor = true;
             this.BtnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
@@ -181,7 +182,7 @@
             this.CboFornecedor.Location = new System.Drawing.Point(145, 83);
             this.CboFornecedor.Name = "CboFornecedor";
             this.CboFornecedor.Size = new System.Drawing.Size(335, 24);
-            this.CboFornecedor.TabIndex = 2;
+            this.CboFornecedor.TabIndex = 3;
             this.CboFornecedor.Text = "Selecione";
             this.CboFornecedor.Click += new System.EventHandler(this.CboFornecedor_Click);
             // 
@@ -190,7 +191,7 @@
             this.TxtTotalNota.Location = new System.Drawing.Point(589, 81);
             this.TxtTotalNota.Name = "TxtTotalNota";
             this.TxtTotalNota.Size = new System.Drawing.Size(137, 23);
-            this.TxtTotalNota.TabIndex = 3;
+            this.TxtTotalNota.TabIndex = 4;
             this.TxtTotalNota.Text = "R$";
             // 
             // label7
@@ -219,7 +220,7 @@
             this.DataVencNF.Location = new System.Drawing.Point(589, 40);
             this.DataVencNF.Name = "DataVencNF";
             this.DataVencNF.Size = new System.Drawing.Size(137, 23);
-            this.DataVencNF.TabIndex = 1;
+            this.DataVencNF.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -277,7 +278,7 @@
             this.BtnConsultaProduto.Location = new System.Drawing.Point(245, 36);
             this.BtnConsultaProduto.Name = "BtnConsultaProduto";
             this.BtnConsultaProduto.Size = new System.Drawing.Size(176, 31);
-            this.BtnConsultaProduto.TabIndex = 175;
+            this.BtnConsultaProduto.TabIndex = 6;
             this.BtnConsultaProduto.Text = "Consultar Produtos";
             this.BtnConsultaProduto.UseVisualStyleBackColor = true;
             this.BtnConsultaProduto.Click += new System.EventHandler(this.BtnConsultaProduto_Click);
@@ -305,7 +306,7 @@
             this.TxtProduto.Location = new System.Drawing.Point(103, 40);
             this.TxtProduto.Name = "TxtProduto";
             this.TxtProduto.Size = new System.Drawing.Size(116, 23);
-            this.TxtProduto.TabIndex = 4;
+            this.TxtProduto.TabIndex = 5;
             this.TxtProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProduto_KeyPress);
             this.TxtProduto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtProduto_KeyUp);
             // 
@@ -322,7 +323,7 @@
             this.TxtPrecoCusto.Location = new System.Drawing.Point(103, 123);
             this.TxtPrecoCusto.Name = "TxtPrecoCusto";
             this.TxtPrecoCusto.Size = new System.Drawing.Size(116, 23);
-            this.TxtPrecoCusto.TabIndex = 5;
+            this.TxtPrecoCusto.TabIndex = 7;
             this.TxtPrecoCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
@@ -340,7 +341,7 @@
             this.TxtQuant.Location = new System.Drawing.Point(332, 123);
             this.TxtQuant.Name = "TxtQuant";
             this.TxtQuant.Size = new System.Drawing.Size(49, 23);
-            this.TxtQuant.TabIndex = 6;
+            this.TxtQuant.TabIndex = 8;
             this.TxtQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuant_KeyPress_1);
             // 
@@ -370,7 +371,7 @@
             this.BtnSair.Location = new System.Drawing.Point(649, 558);
             this.BtnSair.Name = "BtnSair";
             this.BtnSair.Size = new System.Drawing.Size(77, 31);
-            this.BtnSair.TabIndex = 13;
+            this.BtnSair.TabIndex = 15;
             this.BtnSair.Text = "Sair";
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click_1);
@@ -382,7 +383,7 @@
             this.BtnDeletar.Location = new System.Drawing.Point(368, 558);
             this.BtnDeletar.Name = "BtnDeletar";
             this.BtnDeletar.Size = new System.Drawing.Size(100, 31);
-            this.BtnDeletar.TabIndex = 11;
+            this.BtnDeletar.TabIndex = 13;
             this.BtnDeletar.Text = "Deletar";
             this.BtnDeletar.UseVisualStyleBackColor = true;
             this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
@@ -390,10 +391,10 @@
             // BtnConsultar
             // 
             this.BtnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConsultar.Location = new System.Drawing.Point(214, 558);
+            this.BtnConsultar.Location = new System.Drawing.Point(221, 558);
             this.BtnConsultar.Name = "BtnConsultar";
             this.BtnConsultar.Size = new System.Drawing.Size(106, 31);
-            this.BtnConsultar.TabIndex = 10;
+            this.BtnConsultar.TabIndex = 12;
             this.BtnConsultar.Text = "Consultar NF";
             this.BtnConsultar.UseVisualStyleBackColor = true;
             this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
@@ -404,7 +405,7 @@
             this.BtnFechaNota.Location = new System.Drawing.Point(22, 558);
             this.BtnFechaNota.Name = "BtnFechaNota";
             this.BtnFechaNota.Size = new System.Drawing.Size(166, 31);
-            this.BtnFechaNota.TabIndex = 9;
+            this.BtnFechaNota.TabIndex = 11;
             this.BtnFechaNota.Text = "Fechar Nota Fiscal";
             this.BtnFechaNota.UseVisualStyleBackColor = true;
             this.BtnFechaNota.Click += new System.EventHandler(this.BtnFechaNota_Click);
@@ -415,7 +416,7 @@
             this.BtnInserirProduto.Location = new System.Drawing.Point(22, 272);
             this.BtnInserirProduto.Name = "BtnInserirProduto";
             this.BtnInserirProduto.Size = new System.Drawing.Size(421, 39);
-            this.BtnInserirProduto.TabIndex = 7;
+            this.BtnInserirProduto.TabIndex = 9;
             this.BtnInserirProduto.Text = "Inserir Produto";
             this.BtnInserirProduto.UseVisualStyleBackColor = true;
             this.BtnInserirProduto.Click += new System.EventHandler(this.BtnInserirProduto_Click);

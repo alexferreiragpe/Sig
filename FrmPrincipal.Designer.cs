@@ -39,6 +39,7 @@
             this.BtnCliente = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnConsultaNF = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -194,12 +195,26 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.BtnConsultaNF);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(319, 49);
+            this.panel2.Size = new System.Drawing.Size(533, 49);
             this.panel2.TabIndex = 2;
+            // 
+            // BtnConsultaNF
+            // 
+            this.BtnConsultaNF.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BtnConsultaNF.BackgroundImage = global::SIG.Properties.Resources.consultar;
+            this.BtnConsultaNF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnConsultaNF.Location = new System.Drawing.Point(174, 4);
+            this.BtnConsultaNF.Name = "BtnConsultaNF";
+            this.BtnConsultaNF.Size = new System.Drawing.Size(140, 40);
+            this.BtnConsultaNF.TabIndex = 2;
+            this.BtnConsultaNF.Text = "Consultar NF";
+            this.BtnConsultaNF.UseVisualStyleBackColor = false;
+            this.BtnConsultaNF.Click += new System.EventHandler(this.BtnConsultaNF_Click);
             // 
             // button6
             // 
@@ -219,11 +234,11 @@
             this.button7.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button7.BackgroundImage = global::SIG.Properties.Resources.consultar;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button7.Location = new System.Drawing.Point(151, 3);
+            this.button7.Location = new System.Drawing.Point(348, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 40);
+            this.button7.Size = new System.Drawing.Size(161, 40);
             this.button7.TabIndex = 1;
-            this.button7.Text = "Consultar NF";
+            this.button7.Text = "Consultar NF ITENS";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -621,5 +636,6 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button BtnConsultaNF;
     }
 }
