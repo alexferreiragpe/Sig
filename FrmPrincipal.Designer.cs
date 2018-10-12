@@ -91,6 +91,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -104,16 +105,17 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1232, 87);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage1.Size = new System.Drawing.Size(1224, 58);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastros";
             // 
@@ -185,10 +187,10 @@
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage2.Size = new System.Drawing.Size(1224, 58);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Compras";
             // 
@@ -246,9 +248,9 @@
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage3.Controls.Add(this.panel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage3.Size = new System.Drawing.Size(1224, 58);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Vendas";
             // 
@@ -292,9 +294,9 @@
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage4.Controls.Add(this.panel4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage4.Size = new System.Drawing.Size(1224, 58);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Estoque";
             // 
@@ -324,10 +326,10 @@
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage5.Controls.Add(this.panel5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage5.Size = new System.Drawing.Size(1224, 58);
             this.tabPage5.TabIndex = 7;
             this.tabPage5.Text = "Relatórios";
             // 
@@ -386,10 +388,10 @@
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage7.Controls.Add(this.panel7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage7.Size = new System.Drawing.Size(1224, 58);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Utilitários";
             // 
@@ -460,9 +462,9 @@
             // 
             this.tabPage6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage6.Controls.Add(this.panel6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1224, 61);
+            this.tabPage6.Size = new System.Drawing.Size(1224, 58);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Sair";
             // 
@@ -557,13 +559,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::SIG.Properties.Resources.fundo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1232, 524);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "FrmPrincipal";

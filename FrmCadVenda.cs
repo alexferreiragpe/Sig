@@ -250,7 +250,7 @@ namespace SGVB
                     acumulador += Convert.ToDouble(resultado);
 
                 }
-                TotalProdutos = String.Format("{0:C}", acumulador);
+                TotalProdutos = string.Format("{0:C}", acumulador);
                 LblValorTotal.Text = TotalProdutos;
                 LimpaProduto();
             }
@@ -280,7 +280,7 @@ namespace SGVB
                 acumulador += Convert.ToDouble(resultado);
 
             }
-            string TotalProdutos = String.Format("{0:C}", acumulador);
+            string TotalProdutos = string.Format("{0:C}", acumulador);
             LblValorTotal.Text = TotalProdutos;
         }
 
@@ -316,7 +316,7 @@ namespace SGVB
                         Connection = conn
                     };
                     comando.ExecuteNonQuery();
-                    var sql = "INSERT INTO VendaItens(Id_Venda,Id_Cliente,ProdutoCodEan,Descricao,Valor_Unit,Qtde,Total_Item) VALUES ('" + TxtCodVenda.Text + "','" + TxtCodCliente.Text + "',@Codigo,@Descricao, @Valor_Unit,@Qtde, @Total_Item)";
+                    string sql = "INSERT INTO VendaItens(Id_Venda,Id_Cliente,ProdutoCodEan,Descricao,Valor_Unit,Qtde,Total_Item) VALUES ('" + TxtCodVenda.Text + "','" + TxtCodCliente.Text + "',@Codigo,@Descricao, @Valor_Unit,@Qtde, @Total_Item)";
                     SqlCommand comandos = new SqlCommand(sql, conn);
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {

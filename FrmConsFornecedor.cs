@@ -21,12 +21,12 @@ namespace SGDB
             InitializeComponent();
         }
         private void CarregaGrid()
-        {            
-            var sqlDataAdapter = new SqlDataAdapter("select Id_Fornecedor, RazaoSocial, CNPJ, NomeFantasia, IE, Endereco, TipoPessoa, Cidade, Bairro, Estado, Cep, FoneFixo, FoneComercial, Celular, Site, Fornecedor.Email, Fornecedor.DataCad as DataCadastro,Usuario as CadastradoPor from Fornecedor inner join usuario on fornecedor.id_usuario=usuario.id_usuario", conn);
-            var sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
-            var dataTable = new DataTable();
+        {
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select Id_Fornecedor, RazaoSocial, CNPJ, NomeFantasia, IE, Endereco, TipoPessoa, Cidade, Bairro, Estado, Cep, FoneFixo, FoneComercial, Celular, Site, Fornecedor.Email, Fornecedor.DataCad as DataCadastro,Usuario as CadastradoPor from Fornecedor inner join usuario on fornecedor.id_usuario=usuario.id_usuario", conn);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            var bindigSource = new BindingSource
+            BindingSource bindigSource = new BindingSource
             {
                 DataSource = dataTable
             };

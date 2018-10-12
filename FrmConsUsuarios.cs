@@ -21,11 +21,11 @@ namespace SGDB
 
         private void CarregaGrid()
         {
-            var sqlDataAdapter = new SqlDataAdapter("select Id_Usuario,Usuario as Nome_Usuário,Nome as Nome_Completo,Email as Email,Tipo,id_user as CadastradoPor,DataCad as DataCadastro from usuario", conn);
-            var sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
-            var dataTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select Id_Usuario,Usuario as Nome_Usuário,Nome as Nome_Completo,Email as Email,Tipo,id_user as CadastradoPor,DataCad as DataCadastro from usuario", conn);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            var bindigSource = new BindingSource
+            BindingSource bindigSource = new BindingSource
             {
                 DataSource = dataTable
             };

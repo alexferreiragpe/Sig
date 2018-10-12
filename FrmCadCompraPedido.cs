@@ -29,7 +29,7 @@ namespace SGVB
             TxtNotaFiscal.Clear();
             TxtTotalNota.Clear();
             CboFornecedor.Text = "Selecione";
-            dataGridView1.Rows.Clear();
+            dgvProdutos.Rows.Clear();
             TxtNotaFiscal.Focus();
             BtnFechaNota.Enabled = true;
             LblTotalParcial.Text = "";
@@ -39,6 +39,8 @@ namespace SGVB
             TxtPrecoCusto.Enabled = true;
             TxtTotalNota.Enabled = true;
             DataVencNF.Enabled = true;
+            CmbCadPor.Text = "Selecione";
+            CmbCadPor.Enabled = true;
         }
 
 
@@ -54,37 +56,38 @@ namespace SGVB
             TxtProduto.Enabled = true;
             TxtProduto.Focus();
             total = 0;
+            DataVencNF.Show();
         }
 
         private void CarregaGrid()
         {
-            conn.Open();
-            dataGridView1.Rows.Clear();
-            dataGridView1.ColumnCount = 6;
-            var sql = "SELECT * from ItensNotaFiscal where NumeroNF='" + TxtNotaFiscal.Text + "'";
-            var cmd = new SqlCommand(sql, conn);
-            var leitor = cmd.ExecuteReader();
+            //conn.Open();
+            dgvProdutos.Rows.Clear();
+            dgvProdutos.ColumnCount = 6;
+            string sql = "SELECT * from NotaFiscalItens where NFNumero='" + TxtNotaFiscal.Text + "'";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader leitor = cmd.ExecuteReader();
             while (leitor.Read())
             {
-                dataGridView1.Rows.Add(
+                dgvProdutos.Rows.Add(
                     leitor["Id_Produto"].ToString(),
-                    leitor["Cod_EAN"].ToString(),
+                    leitor["Qtd"].ToString(),
                     leitor["Descricao"].ToString(),
-                    leitor["Quantidade"].ToString(),
                     leitor["PrecoUnitario"].ToString(),
-                    leitor["Fabricante"].ToString());
+                    leitor["NFNumero"].ToString(),
+                    leitor["Id_NotaFiscal"].ToString());
             }
             leitor.Close();
-            conn.Close();
-            
+            //conn.Close();
+
         }
 
 
 
         private void BtnInserirProduto_Click(object sender, EventArgs e)
         {
-            
-        if (TxtPrecoCusto.Text == "")
+
+            if (TxtPrecoCusto.Text == "")
             {
                 MessageBox.Show("Falta Preço de Custo!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 TxtPrecoCusto.Focus();
@@ -97,12 +100,11 @@ namespace SGVB
 
             else
             {
-
-                dataGridView1.Rows.Insert(0, TxtProduto.Text, TxtEAN.Text, TxtDescricao.Text,  TxtQuant.Text, Convert.ToDouble(TxtPrecoCusto.Text), TxtFabricante.Text);
                 qtd = Convert.ToDouble(TxtQuant.Text);
                 valor = Convert.ToDouble(TxtPrecoCusto.Text);
-                total=total+(qtd * valor);
-                LblTotalParcial.Text="R$ "+Convert.ToString(total);
+                total = total + (qtd * valor);
+                dgvProdutos.Rows.Insert(0, TxtProduto.Text, TxtEAN.Text, TxtDescricao.Text, TxtQuant.Text, Convert.ToDouble(TxtPrecoCusto.Text), qtd * valor, TxtFabricante.Text);
+                LblTotalParcial.Text = "R$ " + Convert.ToString(total);
                 LimpaProduto();
             }
 
@@ -111,13 +113,13 @@ namespace SGVB
             double resultado = 0;
             double acumulador = 0;
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
-                resultado = (Convert.ToDouble(row.Cells["PrecoCusto"].Value) * Convert.ToDouble(row.Cells["Qtde"].Value));
+                resultado = (Convert.ToDouble(row.Cells["PrecoUnitario"].Value) * Convert.ToDouble(row.Cells["Qtde"].Value));
                 acumulador += Convert.ToDouble(resultado);
 
             }
-            string TotalProdutos = String.Format("{0:C}", acumulador);
+            string TotalProdutos = string.Format("{0:C}", acumulador);
             LblTotalParcial.Text = TotalProdutos;
             TxtProduto.Enabled = true;
 
@@ -126,22 +128,22 @@ namespace SGVB
 
         private void BtnRemoverItem_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+            foreach (DataGridViewRow item in this.dgvProdutos.SelectedRows)
             {
-                dataGridView1.Rows.RemoveAt(item.Index);
+                dgvProdutos.Rows.RemoveAt(item.Index);
 
             }
 
             double resultado = 0;
             double acumulador = 0;
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
-                resultado = (Convert.ToDouble(row.Cells["PrecoCusto"].Value) * Convert.ToDouble(row.Cells["Qtde"].Value));
+                resultado = (Convert.ToDouble(row.Cells["PrecoUnitario"].Value) * Convert.ToDouble(row.Cells["Qtd"].Value));
                 acumulador += Convert.ToDouble(resultado);
 
             }
-            string TotalProdutos = String.Format("{0:C}", acumulador);
+            string TotalProdutos = string.Format("{0:C}", acumulador);
             LblTotalParcial.Text = TotalProdutos;
         }
 
@@ -170,42 +172,58 @@ namespace SGVB
                 MessageBox.Show("Selecione o Usuário", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CmbCadPor.Focus();
             }
-            else if (dataGridView1.RowCount == 0)
+            else if (dgvProdutos.RowCount == 0)
             {
                 MessageBox.Show("Nenhum Item na Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                TxtFabricante.Focus();            }
+                TxtFabricante.Focus();
+            }
 
             else
             {
+                
                 try
                 {
                     conn.Open();
-                    SqlCommand INSERIR = new SqlCommand
+                    SqlCommand INSERIRNOTAFISCAL = new SqlCommand
                     {
-                        //SqlCommand UPDATEESTOQUE = new SqlCommand();
-
                         Connection = conn,
-                        // UPDATEESTOQUE.Connection = conn;
-
                         CommandType = CommandType.Text,
-                        //UPDATEESTOQUE.CommandType = CommandType.Text;
+                        CommandText = "INSERT INTO NotaFiscal(NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor,Id_Usuario) VALUES ('" + TxtNotaFiscal.Text + "','" + TxtTotalNota.Text.Replace(',', '.') + "','" + DateTime.Now + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "',(select Id_Fornecedor from Fornecedor where fornecedor.RazaoSocial='" + CboFornecedor.Text + "'),(select id_usuario from usuario where usuario.usuario='" + CmbCadPor.Text + "'))",
 
-                        CommandText = "INSERT INTO NotaFiscal(NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_Fornecedor,Id_Usuario) VALUES ('" +TxtNotaFiscal.Text+ "','" +TxtTotalNota.Text.Replace(',', '.') + "','" + DateTime.Now + "','" + DataVencNF.Value.ToString("dd/MM/yyyy") + "',(select Id_Fornecedor from Fornecedor where fornecedor.RazaoSocial='" + CboFornecedor.Text + "'),(select id_usuario from usuario where usuario.usuario='" + CmbCadPor.Text + "'))"
+                    };
+                    INSERIRNOTAFISCAL.ExecuteNonQuery();
+                    SqlCommand INSERIRNOTAFISCALITENS = new SqlCommand
+                    {
+                        Connection = conn,
+                        CommandType = CommandType.Text,
+                        CommandText = "INSERT INTO NotaFiscalItens(Id_Produto,Qtd,Descricao,PrecoUnitario,NFNumero,ID_NOTAFISCAL) VALUES (@Id_Produto,@Qtd,@Descricao,@PrecoUnitario,'" + TxtNotaFiscal.Text + "',1)",
                     };
 
-                    INSERIR.ExecuteNonQuery();
+                    for (int i = 0; i < dgvProdutos.Rows.Count; i++)
+                    {
+                        INSERIRNOTAFISCALITENS.Parameters.Clear();
+                        INSERIRNOTAFISCALITENS.Parameters.AddWithValue("@Id_Produto",
+                            dgvProdutos.Rows[i].Cells[0].Value);
+                        INSERIRNOTAFISCALITENS.Parameters.AddWithValue("@Qtd",
+                            dgvProdutos.Rows[i].Cells[4].Value);
+                        INSERIRNOTAFISCALITENS.Parameters.AddWithValue("@Descricao",
+                            dgvProdutos.Rows[i].Cells[2].Value);
+                        INSERIRNOTAFISCALITENS.Parameters.AddWithValue("@Precounitario",
+                            dgvProdutos.Rows[i].Cells[3].Value);
+                        INSERIRNOTAFISCALITENS.ExecuteNonQuery();
+                    }
                    
+                    INSERIRNOTAFISCALITENS.ExecuteNonQuery();
                     MessageBox.Show("Nota Fiscal Gravada com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-
+                    conn.Close();
+                    LimpaCampos();
 
                 }
                 catch
                 {
-                    MessageBox.Show("Erro ao Gravar Nota Fiscal! Verifique.","SIG",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                                   }
+                    MessageBox.Show("Erro ao Gravar Nota Fiscal! Verifique.", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 conn.Close();
-                LimpaCampos();
             }
         }
 
@@ -239,7 +257,7 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<SIG.FrmConsNotaEntrada>().Count() > 0)
             {
-                MessageBox.Show("Consulta Nota Fiscal já está Aberto!");
+                MessageBox.Show("Consulta Nota Fiscal já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
@@ -255,6 +273,7 @@ namespace SGVB
         {
             if (e.KeyCode == Keys.Enter)
             {
+                conn.Open();
                 if (TxtNotaFiscal.Text == "")
                 {
                     //TxtNotaFiscal.Focus();
@@ -262,15 +281,16 @@ namespace SGVB
                 }
                 else
                 {
-                    string cadSql = "SELECT * from NotaFiscal where NotaFiscalNumero='" + TxtNotaFiscal.Text + "'";
+                    string cadSql = "SELECT totalnota,datalanc,datavenc,razaosocial,usuario from NotaFiscal inner join usuario on notafiscal.id_usuario=usuario.id_usuario inner join fornecedor on notafiscal.id_fornecedor=fornecedor.id_fornecedor where NotaFiscalNumero='" + TxtNotaFiscal.Text + "'";
                     SqlCommand comand = new SqlCommand(cadSql, conn);
-                    conn.Open();
+
                     SqlDataReader ler = comand.ExecuteReader();
                     if (ler.Read() == true)
                     {
                         TxtTotalNota.Text = ler["TotalNota"].ToString();
-                        CboFornecedor.Text = ler["Id_Fornecedor"].ToString();
+                        CboFornecedor.Text = ler["razaosocial"].ToString();
                         DataVencNF.Text = ler["DataVenc"].ToString();
+                        CmbCadPor.Text = ler["Usuario"].ToString();
                         ler.Close();
                         CarregaGrid();
                         BtnFechaNota.Enabled = false;
@@ -278,6 +298,7 @@ namespace SGVB
                         BtnRemoverItem.Enabled = false;
                         BtnInserirProduto.Enabled = false;
                         CboFornecedor.Enabled = false;
+                        CmbCadPor.Enabled = false;
                         TxtProduto.Enabled = false;
                         TxtQuant.Enabled = false;
                         TxtPrecoCusto.Enabled = false;
@@ -294,10 +315,10 @@ namespace SGVB
                         MessageBox.Show("Nota Fiscal Não Encontrada!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    conn.Close();
+
 
                 }
-
+                conn.Close();
             }
         }
 
@@ -308,7 +329,7 @@ namespace SGVB
         {
             if (Application.OpenForms.OfType<SGDB.FrmConsProduto>().Count() > 0)
             {
-                MessageBox.Show("Consulta Produto já está Aberto!");
+                MessageBox.Show("Consulta Produto já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
@@ -326,17 +347,17 @@ namespace SGVB
         {
             if (TxtNotaFiscal.Text == "")
             {
-                MessageBox.Show("Favor Digitar Nº Nota Fiscal!");
+                MessageBox.Show("Favor Digitar Nº Nota Fiscal!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand comando = new SqlCommand(@"DELETE FROM NotaFiscal  where (NotaFiscal='" + TxtNotaFiscal.Text + "')", conn);
-                    SqlCommand comandos = new SqlCommand(@"DELETE FROM ItensNotaFiscal  where (NumeroNF='" + TxtNotaFiscal.Text + "')", conn);
-                    comando.CommandType = System.Data.CommandType.Text;
-                    comandos.CommandType = System.Data.CommandType.Text;
+                    SqlCommand comando = new SqlCommand(@"DELETE FROM NotaFiscal  where (NotaFiscalNumero='" + TxtNotaFiscal.Text + "')", conn);
+                    SqlCommand comandos = new SqlCommand(@"DELETE FROM NotaFiscalItens  where (NFNumero='" + TxtNotaFiscal.Text + "')", conn);
+                    comando.CommandType = CommandType.Text;
+                    comandos.CommandType = CommandType.Text;
                     comando.ExecuteNonQuery();
                     comandos.ExecuteNonQuery();
                     MessageBox.Show("Nota Fiscal Deletada com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -344,7 +365,7 @@ namespace SGVB
 
                 catch
                 {
-                    MessageBox.Show("Erro ao Deletar Nota Fiscal! Tente Novamente.", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao Deletar Nota Fiscal! Tente Novamente", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             conn.Close();
@@ -445,6 +466,52 @@ namespace SGVB
             }
         }
 
+        private void CmbCadPor_Enter(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand(@"select Id_usuario,Usuario from Usuario order by Usuario")
+            {
+                Connection = conn
+            };
+            try
+            {
+                conn.Open();
+                CmbCadPor.Items.Clear();
+                SqlDataReader Ler = cmd.ExecuteReader();
+                while (Ler.Read())
+                {
+                    CmbCadPor.Items.Add(Ler.GetValue(1));
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CboFornecedor_Enter(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand(@"select Id_Fornecedor,RazaoSocial from Fornecedor order by RazaoSocial")
+            {
+                Connection = conn
+            };
+            try
+            {
+                conn.Open();
+                CboFornecedor.Items.Clear();
+                SqlDataReader Ler = cmd.ExecuteReader();
+                while (Ler.Read())
+                {
+                    CboFornecedor.Items.Add(Ler.GetValue(1));
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void TxtQuant_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+"))
@@ -457,5 +524,5 @@ namespace SGVB
                 e.Handled = true;
         }
 
-           }
+    }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCompraPedido));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -62,18 +63,19 @@
             this.BtnConsultar = new System.Windows.Forms.Button();
             this.BtnFechaNota = new System.Windows.Forms.Button();
             this.BtnInserirProduto = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvProdutos = new System.Windows.Forms.DataGridView();
+            this.Id_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ean = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoCusto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNotaFiscal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,13 +98,13 @@
             this.groupBox1.Controls.Add(this.BtnConsultar);
             this.groupBox1.Controls.Add(this.BtnFechaNota);
             this.groupBox1.Controls.Add(this.BtnInserirProduto);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvProdutos);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TxtNotaFiscal);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(49, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(752, 603);
+            this.groupBox1.Size = new System.Drawing.Size(830, 603);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamento de Nota Fiscal";
@@ -116,6 +118,7 @@
             this.CmbCadPor.TabIndex = 1;
             this.CmbCadPor.Text = "Selecione";
             this.CmbCadPor.Click += new System.EventHandler(this.CmbCadPor_Click);
+            this.CmbCadPor.Enter += new System.EventHandler(this.CmbCadPor_Enter);
             // 
             // label12
             // 
@@ -133,7 +136,7 @@
             this.BtnRemoverItem.Location = new System.Drawing.Point(506, 272);
             this.BtnRemoverItem.Name = "BtnRemoverItem";
             this.BtnRemoverItem.Size = new System.Drawing.Size(220, 39);
-            this.BtnRemoverItem.TabIndex = 10;
+            this.BtnRemoverItem.TabIndex = 11;
             this.BtnRemoverItem.Text = "Remover Produto";
             this.BtnRemoverItem.UseVisualStyleBackColor = true;
             this.BtnRemoverItem.Click += new System.EventHandler(this.BtnRemoverItem_Click);
@@ -161,7 +164,7 @@
             this.BtnLimpar.Location = new System.Drawing.Point(515, 558);
             this.BtnLimpar.Name = "BtnLimpar";
             this.BtnLimpar.Size = new System.Drawing.Size(100, 31);
-            this.BtnLimpar.TabIndex = 14;
+            this.BtnLimpar.TabIndex = 15;
             this.BtnLimpar.Text = "Limpar";
             this.BtnLimpar.UseVisualStyleBackColor = true;
             this.BtnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
@@ -185,6 +188,7 @@
             this.CboFornecedor.TabIndex = 3;
             this.CboFornecedor.Text = "Selecione";
             this.CboFornecedor.Click += new System.EventHandler(this.CboFornecedor_Click);
+            this.CboFornecedor.Enter += new System.EventHandler(this.CboFornecedor_Enter);
             // 
             // TxtTotalNota
             // 
@@ -240,7 +244,7 @@
             this.groupBox2.Location = new System.Drawing.Point(22, 113);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(704, 153);
-            this.groupBox2.TabIndex = 51;
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do Produto";
             // 
@@ -278,7 +282,7 @@
             this.BtnConsultaProduto.Location = new System.Drawing.Point(245, 36);
             this.BtnConsultaProduto.Name = "BtnConsultaProduto";
             this.BtnConsultaProduto.Size = new System.Drawing.Size(176, 31);
-            this.BtnConsultaProduto.TabIndex = 6;
+            this.BtnConsultaProduto.TabIndex = 7;
             this.BtnConsultaProduto.Text = "Consultar Produtos";
             this.BtnConsultaProduto.UseVisualStyleBackColor = true;
             this.BtnConsultaProduto.Click += new System.EventHandler(this.BtnConsultaProduto_Click);
@@ -306,7 +310,7 @@
             this.TxtProduto.Location = new System.Drawing.Point(103, 40);
             this.TxtProduto.Name = "TxtProduto";
             this.TxtProduto.Size = new System.Drawing.Size(116, 23);
-            this.TxtProduto.TabIndex = 5;
+            this.TxtProduto.TabIndex = 6;
             this.TxtProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProduto_KeyPress);
             this.TxtProduto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtProduto_KeyUp);
             // 
@@ -323,7 +327,7 @@
             this.TxtPrecoCusto.Location = new System.Drawing.Point(103, 123);
             this.TxtPrecoCusto.Name = "TxtPrecoCusto";
             this.TxtPrecoCusto.Size = new System.Drawing.Size(116, 23);
-            this.TxtPrecoCusto.TabIndex = 7;
+            this.TxtPrecoCusto.TabIndex = 8;
             this.TxtPrecoCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
@@ -341,7 +345,7 @@
             this.TxtQuant.Location = new System.Drawing.Point(332, 123);
             this.TxtQuant.Name = "TxtQuant";
             this.TxtQuant.Size = new System.Drawing.Size(49, 23);
-            this.TxtQuant.TabIndex = 8;
+            this.TxtQuant.TabIndex = 9;
             this.TxtQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuant_KeyPress_1);
             // 
@@ -371,7 +375,7 @@
             this.BtnSair.Location = new System.Drawing.Point(649, 558);
             this.BtnSair.Name = "BtnSair";
             this.BtnSair.Size = new System.Drawing.Size(77, 31);
-            this.BtnSair.TabIndex = 15;
+            this.BtnSair.TabIndex = 16;
             this.BtnSair.Text = "Sair";
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click_1);
@@ -383,7 +387,7 @@
             this.BtnDeletar.Location = new System.Drawing.Point(368, 558);
             this.BtnDeletar.Name = "BtnDeletar";
             this.BtnDeletar.Size = new System.Drawing.Size(100, 31);
-            this.BtnDeletar.TabIndex = 13;
+            this.BtnDeletar.TabIndex = 14;
             this.BtnDeletar.Text = "Deletar";
             this.BtnDeletar.UseVisualStyleBackColor = true;
             this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
@@ -394,7 +398,7 @@
             this.BtnConsultar.Location = new System.Drawing.Point(221, 558);
             this.BtnConsultar.Name = "BtnConsultar";
             this.BtnConsultar.Size = new System.Drawing.Size(106, 31);
-            this.BtnConsultar.TabIndex = 12;
+            this.BtnConsultar.TabIndex = 13;
             this.BtnConsultar.Text = "Consultar NF";
             this.BtnConsultar.UseVisualStyleBackColor = true;
             this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
@@ -405,7 +409,7 @@
             this.BtnFechaNota.Location = new System.Drawing.Point(22, 558);
             this.BtnFechaNota.Name = "BtnFechaNota";
             this.BtnFechaNota.Size = new System.Drawing.Size(166, 31);
-            this.BtnFechaNota.TabIndex = 11;
+            this.BtnFechaNota.TabIndex = 12;
             this.BtnFechaNota.Text = "Fechar Nota Fiscal";
             this.BtnFechaNota.UseVisualStyleBackColor = true;
             this.BtnFechaNota.Click += new System.EventHandler(this.BtnFechaNota_Click);
@@ -416,41 +420,50 @@
             this.BtnInserirProduto.Location = new System.Drawing.Point(22, 272);
             this.BtnInserirProduto.Name = "BtnInserirProduto";
             this.BtnInserirProduto.Size = new System.Drawing.Size(421, 39);
-            this.BtnInserirProduto.TabIndex = 9;
+            this.BtnInserirProduto.TabIndex = 10;
             this.BtnInserirProduto.Text = "Inserir Produto";
             this.BtnInserirProduto.UseVisualStyleBackColor = true;
             this.BtnInserirProduto.Click += new System.EventHandler(this.BtnInserirProduto_Click);
             // 
-            // dataGridView1
+            // dgvProdutos
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Prod,
+            this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AllowUserToDeleteRows = false;
+            this.dgvProdutos.AllowUserToOrderColumns = true;
+            this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvProdutos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Produto,
             this.Ean,
-            this.DescriProd,
+            this.Descricao,
+            this.PrecoUnitario,
             this.Qtde,
-            this.PrecoCusto,
+            this.TotalItem,
             this.Fabricante});
-            this.dataGridView1.Location = new System.Drawing.Point(21, 317);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(705, 207);
-            this.dataGridView1.TabIndex = 49;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProdutos.Location = new System.Drawing.Point(21, 317);
+            this.dgvProdutos.Name = "dgvProdutos";
+            this.dgvProdutos.ReadOnly = true;
+            this.dgvProdutos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dgvProdutos.Size = new System.Drawing.Size(803, 207);
+            this.dgvProdutos.TabIndex = 49;
             // 
-            // Id_Prod
+            // Id_Produto
             // 
-            this.Id_Prod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Id_Prod.HeaderText = "Id_Prod";
-            this.Id_Prod.Name = "Id_Prod";
-            this.Id_Prod.ReadOnly = true;
-            this.Id_Prod.Width = 89;
+            this.Id_Produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Id_Produto.HeaderText = "Id_Produto";
+            this.Id_Produto.Name = "Id_Produto";
+            this.Id_Produto.ReadOnly = true;
+            this.Id_Produto.Width = 112;
             // 
             // Ean
             // 
@@ -460,13 +473,24 @@
             this.Ean.ReadOnly = true;
             this.Ean.Width = 61;
             // 
-            // DescriProd
+            // Descricao
             // 
-            this.DescriProd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DescriProd.HeaderText = "Descrição";
-            this.DescriProd.Name = "DescriProd";
-            this.DescriProd.ReadOnly = true;
-            this.DescriProd.Width = 105;
+            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Descricao.HeaderText = "Descricao";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 105;
+            // 
+            // PrecoUnitario
+            // 
+            this.PrecoUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PrecoUnitario.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PrecoUnitario.HeaderText = "Preco Custo";
+            this.PrecoUnitario.Name = "PrecoUnitario";
+            this.PrecoUnitario.ReadOnly = true;
+            this.PrecoUnitario.Width = 121;
             // 
             // Qtde
             // 
@@ -476,16 +500,12 @@
             this.Qtde.ReadOnly = true;
             this.Qtde.Width = 68;
             // 
-            // PrecoCusto
+            // TotalItem
             // 
-            this.PrecoCusto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.PrecoCusto.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PrecoCusto.HeaderText = "Preco Custo";
-            this.PrecoCusto.Name = "PrecoCusto";
-            this.PrecoCusto.ReadOnly = true;
-            this.PrecoCusto.Width = 121;
+            this.TotalItem.HeaderText = "Total Item";
+            this.TotalItem.Name = "TotalItem";
+            this.TotalItem.ReadOnly = true;
+            this.TotalItem.Width = 105;
             // 
             // Fabricante
             // 
@@ -532,7 +552,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -540,7 +560,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProdutos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNotaFiscal;
         private System.Windows.Forms.Button BtnDeletar;
@@ -573,12 +593,13 @@
         private System.Windows.Forms.TextBox TxtEAN;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Prod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ean;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DescriProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qtde;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecoCusto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fabricante;
         private System.Windows.Forms.ComboBox CmbCadPor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ean;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecoUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qtde;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fabricante;
     }
 }

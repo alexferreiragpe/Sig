@@ -30,11 +30,11 @@ namespace SGVB
         private void CarregaGrid()
         {
 
-            var sqlDataAdapter = new SqlDataAdapter("select * from Produto", conn);
-            var sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
-            var dataTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Produto", conn);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
+            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            var bindigSource = new BindingSource
+            BindingSource bindigSource = new BindingSource
             {
                 DataSource = dataTable
             };
