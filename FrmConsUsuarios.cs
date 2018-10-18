@@ -17,7 +17,7 @@ namespace SGDB
         {
             InitializeComponent();
         }
-        private SqlConnection conn = SGVB.ConexaoBanco.sqlConnection;
+        private SqlConnection conn = SIG.ConexaoBanco.sqlConnection;
 
         private void CarregaGrid()
         {

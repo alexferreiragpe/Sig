@@ -15,7 +15,7 @@ namespace SIG
         
     {
 
-        private SqlConnection sqlConn = SGVB.ConexaoBanco.sqlConnection;
+        private SqlConnection sqlConn = SIG.ConexaoBanco.sqlConnection;
 
         public FrmEsqueciSenha()
         {

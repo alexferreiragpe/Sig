@@ -1,4 +1,4 @@
-﻿namespace SGVB
+﻿namespace SIG
 {
     partial class FrmCompraPedido
     {
@@ -102,7 +102,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TxtNotaFiscal);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(49, 14);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(830, 603);
             this.groupBox1.TabIndex = 50;
@@ -144,7 +144,7 @@
             // LblTotalParcial
             // 
             this.LblTotalParcial.AutoSize = true;
-            this.LblTotalParcial.Location = new System.Drawing.Point(613, 527);
+            this.LblTotalParcial.Location = new System.Drawing.Point(706, 537);
             this.LblTotalParcial.Name = "LblTotalParcial";
             this.LblTotalParcial.Size = new System.Drawing.Size(0, 17);
             this.LblTotalParcial.TabIndex = 68;
@@ -152,16 +152,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(500, 527);
+            this.label8.Location = new System.Drawing.Point(600, 537);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 17);
+            this.label8.Size = new System.Drawing.Size(105, 17);
             this.label8.TabIndex = 67;
-            this.label8.Text = "Total Parcial";
+            this.label8.Text = "Total Parcial:";
             // 
             // BtnLimpar
             // 
             this.BtnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLimpar.Location = new System.Drawing.Point(515, 558);
+            this.BtnLimpar.Location = new System.Drawing.Point(411, 530);
             this.BtnLimpar.Name = "BtnLimpar";
             this.BtnLimpar.Size = new System.Drawing.Size(100, 31);
             this.BtnLimpar.TabIndex = 15;
@@ -372,7 +372,7 @@
             // BtnSair
             // 
             this.BtnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSair.Location = new System.Drawing.Point(649, 558);
+            this.BtnSair.Location = new System.Drawing.Point(517, 530);
             this.BtnSair.Name = "BtnSair";
             this.BtnSair.Size = new System.Drawing.Size(77, 31);
             this.BtnSair.TabIndex = 16;
@@ -384,7 +384,7 @@
             // 
             this.BtnDeletar.Enabled = false;
             this.BtnDeletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDeletar.Location = new System.Drawing.Point(368, 558);
+            this.BtnDeletar.Location = new System.Drawing.Point(305, 530);
             this.BtnDeletar.Name = "BtnDeletar";
             this.BtnDeletar.Size = new System.Drawing.Size(100, 31);
             this.BtnDeletar.TabIndex = 14;
@@ -395,7 +395,7 @@
             // BtnConsultar
             // 
             this.BtnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConsultar.Location = new System.Drawing.Point(221, 558);
+            this.BtnConsultar.Location = new System.Drawing.Point(193, 530);
             this.BtnConsultar.Name = "BtnConsultar";
             this.BtnConsultar.Size = new System.Drawing.Size(106, 31);
             this.BtnConsultar.TabIndex = 13;
@@ -406,7 +406,7 @@
             // BtnFechaNota
             // 
             this.BtnFechaNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFechaNota.Location = new System.Drawing.Point(22, 558);
+            this.BtnFechaNota.Location = new System.Drawing.Point(21, 530);
             this.BtnFechaNota.Name = "BtnFechaNota";
             this.BtnFechaNota.Size = new System.Drawing.Size(166, 31);
             this.BtnFechaNota.TabIndex = 12;
@@ -453,7 +453,7 @@
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dgvProdutos.Size = new System.Drawing.Size(803, 207);
             this.dgvProdutos.TabIndex = 49;
             // 

@@ -14,7 +14,7 @@ namespace SIG
     public partial class FrmConsNotaEntrada : Form
     {
 
-        private SqlConnection conn = SGVB.ConexaoBanco.sqlConnection;
+        private SqlConnection conn = SIG.ConexaoBanco.sqlConnection;
 
         public FrmConsNotaEntrada()
         {
@@ -22,7 +22,7 @@ namespace SIG
         }
         private void CarregaGrid()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select NotaFiscalNumero,TotalNota,DataLanc,DataVenc,Id_fornecedor as Fornecedor,Id_usuario as Usuário from NotaFiscal", conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select NotaFiscalNumero,TotalNota,DataLanc,DataVenc,(select nomefantasia from fornecedor f inner join notafiscal nf on f.id_fornecedor=nf.id_fornecedor),Id_usuario as Usuário from NotaFiscal ORDER BY NOTAFISCALNUMERO", conn);
             SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(sqlDataAdapter);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

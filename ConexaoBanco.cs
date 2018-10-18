@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data.SqlClient;
-using SGVB;
+using SIG;
 
-namespace SGVB
+namespace SIG
 {
     public class ConexaoBanco
     {
-        public static  SqlConnection sqlConnection = new SqlConnection(@"Data Source=casa;Initial Catalog=Dados;Integrated Security=True");
+        public static  SqlConnection sqlConnection = new SqlConnection(@"Data Source=ultrabook;Initial Catalog=Dados;Integrated Security=True");
     }
 
 }

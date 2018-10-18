@@ -16,15 +16,15 @@ namespace SGVB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSplash());
-            FrmLogin flogin = new FrmLogin();
+            Application.Run(new SIG.FrmSplash());
+            SIG.FrmLogin flogin = new SIG.FrmLogin();
 
 
             flogin.ShowDialog();
 
             if (flogin.logado)
             {
-                Application.Run(new FrmPrincipal());
+                Application.Run(new SIG.FrmPrincipal());
 
             }
         }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SGDB;
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmPrincipal : Form
     {
@@ -262,14 +262,17 @@ namespace SGVB
 
         private void BtnConsultaNF_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<SIG.FrmConsNotaEntrada>().Count() > 0)
+            if (Application.OpenForms.OfType<FrmConsNotaEntrada>().Count() > 0)
             {
                 MessageBox.Show("Consulta Nota Fiscal já está Aberto!");
 
             }
             else
             {
-                SIG.FrmConsNotaEntrada ConsNotaFiscalEntrada = new SIG.FrmConsNotaEntrada();
+                FrmConsNotaEntrada ConsNotaFiscalEntrada = new FrmConsNotaEntrada()
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };
                 ConsNotaFiscalEntrada.Show();
             }
         }

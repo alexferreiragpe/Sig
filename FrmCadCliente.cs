@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using SGDB;
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmCadCliente : Form
     {
@@ -199,7 +199,10 @@ namespace SGVB
             }
             else
             {
-                FrmConsClientes ConsultaCliente = new FrmConsClientes();
+                FrmConsClientes ConsultaCliente = new FrmConsClientes()
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };
                 ConsultaCliente.Show();
             }
         }

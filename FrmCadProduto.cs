@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmCadProduto : Form
     {
@@ -266,7 +266,10 @@ namespace SGVB
             }
             else
             {
-                SGDB.FrmConsProduto ConsultaProduto = new SGDB.FrmConsProduto();
+                SGDB.FrmConsProduto ConsultaProduto = new SGDB.FrmConsProduto()
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };              
                 ConsultaProduto.Show();
             }
         }

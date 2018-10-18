@@ -14,7 +14,7 @@ namespace SGDB
     public partial class FrmConsClientes : Form
     {
 
-        private SqlConnection conn = SGVB.ConexaoBanco.sqlConnection;
+        private SqlConnection conn = SIG.ConexaoBanco.sqlConnection;
 
         public FrmConsClientes()
         {

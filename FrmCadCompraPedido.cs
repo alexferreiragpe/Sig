@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmCompraPedido : Form
     {
@@ -139,7 +139,7 @@ namespace SGVB
 
             foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
-                resultado = (Convert.ToDouble(row.Cells["PrecoUnitario"].Value) * Convert.ToDouble(row.Cells["Qtd"].Value));
+                resultado = (Convert.ToDouble(row.Cells["PrecoUnitario"].Value) * Convert.ToDouble(row.Cells["Qtde"].Value));
                 acumulador += Convert.ToDouble(resultado);
 
             }
@@ -192,11 +192,13 @@ namespace SGVB
 
                     };
                     INSERIRNOTAFISCAL.ExecuteNonQuery();
+                   
                     SqlCommand INSERIRNOTAFISCALITENS = new SqlCommand
                     {
                         Connection = conn,
                         CommandType = CommandType.Text,
-                        CommandText = "INSERT INTO NotaFiscalItens(Id_Produto,Qtd,Descricao,PrecoUnitario,NFNumero,ID_NOTAFISCAL) VALUES (@Id_Produto,@Qtd,@Descricao,@PrecoUnitario,'" + TxtNotaFiscal.Text + "',1)",
+                        //CommandText = "insert into NotaFiscalItens values(1, 555, 'c#', 5.55, 1, 3)"
+                        CommandText = "INSERT INTO NotaFiscalItens VALUES (@Id_Produto,@Qtd,@Descricao,@PrecoUnitario,'" +Convert.ToInt16(TxtNotaFiscal.Text) + "',select notafiscal.id_notafiscal from NotaFiscal inner join notafiscalitens on notafiscal.Id_NotaFiscal=notafiscalitens.Id_NotaFiscal)",
                     };
 
                     for (int i = 0; i < dgvProdutos.Rows.Count; i++)
@@ -212,7 +214,7 @@ namespace SGVB
                             dgvProdutos.Rows[i].Cells[3].Value);
                         INSERIRNOTAFISCALITENS.ExecuteNonQuery();
                     }
-                   
+
                     INSERIRNOTAFISCALITENS.ExecuteNonQuery();
                     MessageBox.Show("Nota Fiscal Gravada com Sucesso!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -255,16 +257,21 @@ namespace SGVB
 
         private void BtnConsultar_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<SIG.FrmConsNotaEntrada>().Count() > 0)
+            if (Application.OpenForms.OfType<FrmConsNotaEntrada>().Count() > 0)
             {
                 MessageBox.Show("Consulta Nota Fiscal já está Aberto!", "SIG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                SIG.FrmConsNotaEntrada ConsNotaFiscalEntrada = new SIG.FrmConsNotaEntrada();
+                FrmConsNotaEntrada ConsNotaFiscalEntrada = new FrmConsNotaEntrada
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };
                 ConsNotaFiscalEntrada.Show();
             }
+            
+            
 
         }
 

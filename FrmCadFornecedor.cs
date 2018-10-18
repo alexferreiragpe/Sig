@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SIG;
 
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmCadFornecedor : Form
     {
@@ -253,7 +254,10 @@ namespace SGVB
             }
             else
             {
-                SGDB.FrmConsFornecedor ConsultaFornecedor = new SGDB.FrmConsFornecedor();
+                SGDB.FrmConsFornecedor ConsultaFornecedor = new SGDB.FrmConsFornecedor()
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };
                 ConsultaFornecedor.Show();
             }
         }

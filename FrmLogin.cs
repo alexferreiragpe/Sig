@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace SGVB
+namespace SIG
 {
     public partial class FrmLogin : Form
     {
@@ -106,7 +106,7 @@ namespace SGVB
 
         private void LblEsqueciSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            SIG.FrmEsqueciSenha frmEsqueci = new SIG.FrmEsqueciSenha();
+            FrmEsqueciSenha frmEsqueci = new FrmEsqueciSenha();
             frmEsqueci.Show();
         }
     }

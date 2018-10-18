@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using SGDB;
 
-namespace SGVB
+namespace SIG
 {
 
 
@@ -120,7 +120,10 @@ namespace SGVB
             }
             else
             {
-                FrmConsultaUsuarios ConsUsuario = new FrmConsultaUsuarios();
+                FrmConsultaUsuarios ConsUsuario = new FrmConsultaUsuarios()
+                {
+                    MdiParent = FrmPrincipal.ActiveForm
+                };
                 ConsUsuario.Show();
             }
         }

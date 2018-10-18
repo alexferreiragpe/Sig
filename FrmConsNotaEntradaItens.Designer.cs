@@ -1,4 +1,4 @@
-﻿namespace SGVB
+﻿namespace SIG
 {
     partial class FrmCompraOrcamento
     {
